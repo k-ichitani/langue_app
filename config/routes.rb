@@ -1,4 +1,54 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'reservations/index'
+    get 'reservations/show'
+    get 'reservations/edit'
+  end
+  namespace :admin do
+    get 'schedules/new'
+    get 'schedules/index'
+    get 'schedules/show'
+    get 'schedules/edit'
+  end
+  namespace :admin do
+    get 'teachers/show'
+    get 'teachers/edit'
+    get 'teachers/confirm'
+  end
+  namespace :admin do
+    get 'students/index'
+    get 'students/show'
+    get 'students/edit'
+  end
+  namespace :admin do
+    get 'homes/top'
+  end
+  namespace :public do
+    get 'teachers/index'
+    get 'teachers/show'
+  end
+  namespace :public do
+    get 'schedules/index'
+    get 'schedules/show'
+  end
+  namespace :public do
+    get 'reservations/new'
+    get 'reservations/complete'
+    get 'reservations/index'
+    get 'reservations/show'
+    get 'reservations/edit'
+  end
+  namespace :public do
+    get 'students/show'
+    get 'students/edit'
+    get 'students/confirm'
+  end
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+  end
+  root to: "public/homes#top"
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
