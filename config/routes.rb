@@ -1,28 +1,38 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'reservations/index'
-    get 'reservations/show'
-    get 'reservations/edit'
-  end
-  namespace :admin do
-    get 'schedules/new'
-    get 'schedules/index'
-    get 'schedules/show'
-    get 'schedules/edit'
-  end
-  namespace :admin do
-    get 'teachers/show'
-    get 'teachers/edit'
+    resources :reservations, only: [:index, :show, :edit, :update]
+    resources :schedules
+    resources :teachers, only: [:index]
+    resources :students, only: [:index, :show, :edit, :update]
+    get 'admin', to: 'homes#top'
+    get 'teachers/mypage', to: 'teachers#show', as: 'admin_teacher'
+    get 'teachers/information/edit', to: 'teachers#edit', as: 'edit_teacher'
+    patch 'teachers/information', to: 'teachers#update'
     get 'teachers/confirm'
+    patch 'teachers/withdraw'
+    # get 'reservations/index'
+    # get 'reservations/show'
+    # get 'reservations/edit'
   end
-  namespace :admin do
-    get 'students/index'
-    get 'students/show'
-    get 'students/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
+  # namespace :admin do
+  #   get 'schedules/new'
+  #   get 'schedules/index'
+  #   get 'schedules/show'
+  #   get 'schedules/edit'
+  # end
+  # namespace :admin do
+  #   get 'teachers/show'
+  #   get 'teachers/edit'
+  #   get 'teachers/confirm'
+  # end
+  # namespace :admin do
+  #   get 'students/index'
+  #   get 'students/show'
+  #   get 'students/edit'
+  # end
+  # namespace :admin do
+  #   get 'homes/top'
+  # end
   namespace :public do
     get 'teachers/index'
     get 'teachers/show'

@@ -11,7 +11,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -19,14 +19,21 @@
           <div>
             <ul class="navbar-nav ml-auto">
               <% if student_signed_in? %>
-                <li class="nav-item">予約</li>
+                <li class="nav-item">
+                  <!--%= link_to do %>-->
+                  予約
+                  </li>
                 <li class="nav-item">講師一覧</li>
                 <li class="nav-item">カテゴリ？</li>
                 <li class="nav-item">マイページ</li>
                 <li class="nav-item">ログアウト</li>
               <% else %>
                 <li class="nav-item">Top</li>
-                <li class="nav-item">About</li>
+                <li class="nav-item">
+                  <!--%= link_to do %>-->
+                  <i class="fal fa-school">About</i>
+                  <!--% end %>-->
+                </li>
                 <li class="nav-item">ログイン</li>
                 <li class="nav-item">新規会員登録</li>
               <% end %>
