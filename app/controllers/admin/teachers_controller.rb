@@ -1,4 +1,7 @@
 class Admin::TeachersController < ApplicationController
+  def index
+  end
+
   def show
   end
 

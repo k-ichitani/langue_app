@@ -1,2 +1,29 @@
-<h1>Admin::Schedules#new</h1>
-<p>Find me in app/views/admin/schedules/new.html.erb</p>
+<h1>シフト登録</h1>
+
+<%= form_with model: @schedule do |f| %>
+  <h4>①</h4>
+    <%= f.label :勤務日時 %>
+    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :finish_time %>
+  <h4>②</h4>
+    <%= f.label :勤務日時 %>
+    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :finish_time %>
+    
+  <h4>③</h4>
+    <%= f.label :勤務日時 %>
+    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :finish_time %>
+  
+  <h4>④</h4>
+    <%= f.label :勤務日時 %>
+    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :finish_time %>
+    
+  <h4>⑤</h4>
+    <%= f.label :勤務日時 %>
+    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :finish_time %>
+    
+  <%= f.submit '登録' %>
+<% end %>

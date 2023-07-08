@@ -1,54 +1,35 @@
 Rails.application.routes.draw do
+  root to: "public/homes#top"
   namespace :admin do
-    get 'reservations/index'
-    get 'reservations/show'
-    get 'reservations/edit'
+    resources :reservations, only: [:index, :show, :edit, :update]
+    resources :schedules
+    resources :teachers, only: [:index]
+      get 'teachers/mypage', to: 'teachers#show', as: 'teacher'
+      get 'teachers/information/edit', to: 'teachers#edit', as: 'edit_teacher'
+      patch 'teachers/information', to: 'teachers#update'
+      get 'teachers/confirm'
+      patch 'teachers/withdraw'
+    resources :students, only: [:index, :show, :edit, :update]
   end
-  namespace :admin do
-    get 'schedules/new'
-    get 'schedules/index'
-    get 'schedules/show'
-    get 'schedules/edit'
+  scope module: :admin do
+    get 'admin', to: 'homes#top'
   end
-  namespace :admin do
-    get 'teachers/show'
-    get 'teachers/edit'
-    get 'teachers/confirm'
-  end
-  namespace :admin do
-    get 'students/index'
-    get 'students/show'
-    get 'students/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'teachers/index'
-    get 'teachers/show'
-  end
-  namespace :public do
-    get 'schedules/index'
-    get 'schedules/show'
-  end
-  namespace :public do
-    get 'reservations/new'
-    get 'reservations/complete'
-    get 'reservations/index'
-    get 'reservations/show'
-    get 'reservations/edit'
-  end
-  namespace :public do
-    get 'students/show'
-    get 'students/edit'
-    get 'students/confirm'
-  end
-  namespace :public do
-    get 'homes/top'
+  
+  scope module: :public do
+    resources :teachers, only: [:index, :show]
+    resources :schedules, only: [:index, :show]
+    resources :reservations, only: [:new, :index, :show, :edit, :update, :destroy]
+      post 'reservations/confirm', to: 'reservations#confirm'
+      get 'reservations/complete', to: 'reservations#complete'
+      post 'reservation/complete', to: 'reservations#create'
+    get 'students/mypage', to: 'students#show'
+    get 'students/information/edit', to: 'students#edit'
+    patch 'students/information', to: 'students#update'
+    get 'students/confirm', to: 'students#confirm'
+    patch 'students/withdraw', to: 'students#withdraw'
     get 'homes/about'
   end
-  root to: "public/homes#top"
-
+  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -61,5 +42,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  # ゲストログイン
+  devise_scope :student do
+    post 'students/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
