@@ -20,22 +20,47 @@
             <ul class="navbar-nav ml-auto">
               <% if student_signed_in? %>
                 <li class="nav-item">
-                  <!--%= link_to do %>-->
-                  予約
-                  </li>
-                <li class="nav-item">講師一覧</li>
-                <li class="nav-item">カテゴリ？</li>
-                <li class="nav-item">マイページ</li>
-                <li class="nav-item">ログアウト</li>
-              <% else %>
-                <li class="nav-item">Top</li>
-                <li class="nav-item">
-                  <!--%= link_to do %>-->
-                  <i class="fal fa-school">About</i>
-                  <!--% end %>-->
+                  <%= link_to schedules_path do %>
+                  <i class="fas fa-calendar"></i>予約
+                  <% end %>
                 </li>
-                <li class="nav-item">ログイン</li>
-                <li class="nav-item">新規会員登録</li>
+                <li class="nav-item">
+                  <%= link_to teachers_path do %>
+                  <i class="fas fa-users"></i>講師一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">カテゴリ？</li>
+                <li class="nav-item">
+                  <%= link_to students_mypage_path do %>
+                  <i class="fas fa-user-edit"></i>マイページ
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_student_session_path do %>
+                  <i class="fas fa-sign-out-alt"></i>ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to root_path do %>
+                  <i class="fas fa-home"></i>Top
+                    <% end %>
+                  </li>
+                <li class="nav-item">
+                  <%= link_to homes_about_path do %>
+                  <i class="fas fa-school"></i>About
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_student_session_path do %>
+                  <i class="fas fa-sign-in-alt"></i>ログイン
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_student_registration_path do %>
+                  <i class="fas fa-user-plus"></i>新規会員登録
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           </div>
