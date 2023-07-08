@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "public/homes#top"
   namespace :admin do
     resources :reservations, only: [:index, :show, :edit, :update]
     resources :schedules
@@ -28,8 +29,7 @@ Rails.application.routes.draw do
     patch 'students/withdraw', to: 'students#withdraw'
     get 'homes/about'
   end
-  root to: "public/homes#top"
-
+  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
@@ -42,5 +42,11 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+  
+  # ゲストログイン
+  devise_scope :student do
+    post 'students/guest_sign_in', to: 'public/sessions#guest_sign_in'
+  end
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
