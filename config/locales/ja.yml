@@ -1,0 +1,10 @@
+ja:
+  enums:
+    teacher:
+      specialty:
+        business: "ビジネス"
+        travel: "旅行"
+        exam: "試験・資格"
+        daily_conversation: "日常会話"
+        culture: "文化"
+        other: "その他"
