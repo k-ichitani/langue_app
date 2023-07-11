@@ -1,8 +1,32 @@
 <div>
   <h2>会員詳細ページ</h2>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>姓</th>
+          <th>名</th>
+          <th>メールアドレス</th>
+          <th>電話番号</th>
+          <th>会員ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @student.id %></td>
+          <td><%= @student.last_name %></td>
+          <td><%= @student.first_name %></td>
+          <td><%= @student.email %></td>
+          <td><%= @student.telephone_number %></td>
+          <td><%= @student.is_deleted %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <% if student_signed_in? && @student.id == current_student.id %>
-    編集する
+    <%= link_to "編集する", edit_students_information_path %>
     <%= link_to "退会する", students_confirm_path %>
   <% end %>
 </div>

@@ -1,2 +1,27 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<div>
+  <h1>生徒一覧</h1>
+  <div>
+      <table>
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <% @students.each do |student| %>
+        <tbody>
+          <tr>
+            <td><%= student.id %></td>
+            <td><%= link_to students_information_path(student.id) do %>
+            <%= student.last_name + student.first_name %>
+            <% end %></td>
+            <td><%= student.email %></td>
+            <td><%= student.is_deleted %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+  </div>
+</div>

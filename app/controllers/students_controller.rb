@@ -1,9 +1,21 @@
 class StudentsController < ApplicationController
+
+  def index
+    @students = Student.all
+  end
+
   def show
-    @student = current_student
+    @student = Student.find(params[:id])
   end
 
   def edit
+    @student = Student.find(params[:id])
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    @student.update(student_params)
+    redirect_to students_information_path(@student.id)
   end
 
   def confirm
@@ -25,5 +37,11 @@ class StudentsController < ApplicationController
       flash[:alert] = "ユーザーが見つかりません"
       redirect_to root_path
     end
+  end
+
+  private
+
+  def student_params
+    params.require(:student).permit(:last_name, :first_name, :email, :telephone_number, :is_deleted)
   end
 end

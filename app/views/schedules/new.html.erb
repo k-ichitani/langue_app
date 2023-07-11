@@ -1,0 +1,25 @@
+<h1>スケジュール登録</h1>
+<div>
+  <!--<div>講師名： %= @teacher.last_name + @teacher.first.name %></div>-->
+
+<%= form_with model: @schedule, url: schedules_path, method: :post do |f| %>
+  <table>
+    <thead>
+      <tr>
+        <th>勤務日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+        <!--%= f.label : %>-->
+        <%= f.datetime_select :start_time, :minute_step => 30 %>～
+        <%= f.datetime_select :finish_time, :minute_step => 30 %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= f.submit '登録' %>
+
+<% end %>
+
+</div>
