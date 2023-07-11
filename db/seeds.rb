@@ -17,8 +17,8 @@ Teacher.create!(
   email: 'tanaka@example.com',
   telephone_number: '00000000001',
   encrypted_password: '123456',
-  # specialty: '',
-  is_deleted: 'false',
+  specialty: 'business',
+  is_deleted: false,
 )
 
 Teacher.create!(
@@ -27,8 +27,8 @@ Teacher.create!(
   email: 'louise@example.com',
   telephone_number: '00000000002',
   encrypted_password: '123456',
-  # specialty: '',
-  is_deleted: 'false'
+  specialty: 'culture',
+  is_deleted: false
 )
 
 Student.create!(
@@ -37,5 +37,5 @@ Student.create!(
   email: 'yamada@example.com',
   telephone_number: '00000000000',
   password: '123456',
-  is_deleted: 'false'
+  is_deleted: false
 )
