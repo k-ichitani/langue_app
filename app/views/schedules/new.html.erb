@@ -1,4 +1,4 @@
-<h1>シフト登録</h1>
+<h1>スケジュール登録</h1>
 <div>
   <!--<div>講師名： %= @teacher.last_name + @teacher.first.name %></div>-->
 
@@ -13,8 +13,8 @@
       <tr>
       <td>
         <!--%= f.label : %>-->
-        <!--%= f.datetime_select :start_time, :minute_step => 30 %>～-->
-        <!--%= f.datetime_select :finish_time, :minute_step => 30 %></td>-->
+        <%= f.datetime_select :start_time, :minute_step => 30 %>～
+        <%= f.datetime_select :finish_time, :minute_step => 30 %></td>
       </tr>
     </tbody>
   </table>

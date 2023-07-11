@@ -16,7 +16,7 @@ Teacher.create!(
   first_name: 'Ichiro',
   email: 'tanaka@example.com',
   telephone_number: '00000000001',
-  encrypted_password: '123456',
+  password: '123456',
   specialty: 'business',
   is_deleted: false,
 )
@@ -26,7 +26,7 @@ Teacher.create!(
   first_name: 'Louise',
   email: 'louise@example.com',
   telephone_number: '00000000002',
-  encrypted_password: '123456',
+  password: '123456',
   specialty: 'culture',
   is_deleted: false
 )
