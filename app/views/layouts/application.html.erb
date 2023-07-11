@@ -31,7 +31,7 @@
                 </li>
                 <li class="nav-item">カテゴリ？</li>
                 <li class="nav-item">
-                  <%= link_to students_mypage_path do %>
+                  <%= link_to students_information_path do %>
                   <i class="fas fa-user-circle"></i>マイページ
                   <% end %>
                 </li>
@@ -42,22 +42,22 @@
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to admin_reservations_path do %>
+                  <!--%= link_to schedule_reservations_path do %>-->
                   <i class="fas fa-calendar"></i>予約一覧
-                  <% end %>
+                  <!--% end %>-->
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_teachers_path do %>
+                  <%= link_to teachers_path do %>
                   <i class="fas fa-chalkboard-teacher"></i>講師一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_students_path do %>
+                  <%= link_to students_path do %>
                   <i class="fas fa-users"></i>生徒一覧
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to admin_schedules_path do %>
+                  <%= link_to schedules_path do %>
                   <i class="far fa-calendar-check"></i>スケジュール
                   <% end %>
                 </li>
@@ -73,7 +73,7 @@
                     <% end %>
                   </li>
                 <li class="nav-item">
-                  <%= link_to homes_about_path do %>
+                  <%= link_to about_path do %>
                   <i class="fas fa-school"></i>About
                   <% end %>
                 </li>

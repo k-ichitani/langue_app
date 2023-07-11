@@ -1,0 +1,8 @@
+<div>
+  <h2>会員詳細ページ</h2>
+
+  <% if student_signed_in? && @student.id == current_student.id %>
+    編集する
+    <%= link_to "退会する", students_confirm_path %>
+  <% end %>
+</div>

@@ -1,39 +1,36 @@
 Rails.application.routes.draw do
-  root to: "public/homes#top"
-  namespace :admin do
-    resources :reservations, only: [:index, :show, :edit, :update]
-    resources :schedules
-    resources :teachers, only: [:index]
-      get 'teachers/mypage', to: 'teachers#show', as: 'teacher'
-      get 'teachers/information/edit', to: 'teachers#edit', as: 'edit_teacher'
-      patch 'teachers/information', to: 'teachers#update'
-      get 'teachers/confirm'
-      patch 'teachers/withdraw'
-    resources :students, only: [:index, :show, :edit, :update]
-  end
-  scope module: :admin do
-    get 'admin', to: 'homes#top'
-  end
-
-  scope module: :public do
-    resources :teachers, only: [:index, :show]
-    resources :schedules, only: [:index, :show]
-    resources :reservations, only: [:new, :index, :show, :edit, :update, :destroy]
+  root to: "homes#top"
+  get '/about', to: 'homes#about'
+  resources :schedules do
+    resources :reservations, only: [:new, :index]
       post 'reservations/confirm', to: 'reservations#confirm'
       get 'reservations/complete', to: 'reservations#complete'
       post 'reservation/complete', to: 'reservations#create'
-    get 'students/mypage', to: 'students#show'
+  end
+  resources :reservations, only: [:show, :edit, :update, :destroy]
+  resources :teachers, only: [:index]
+    get 'teachers/information', to: 'teachers#show'
+    get 'teachers/information/edit', to: 'teachers#edit'
+    patch 'teachers/information', to: 'teachers#update'
+    get 'teachers/confirm'
+    patch 'teachers/withdraw'
+  resources :students, only: [:index]
+    get 'students/information', to: 'students#show'
     get 'students/information/edit', to: 'students#edit'
     patch 'students/information', to: 'students#update'
     get 'students/confirm', to: 'students#confirm'
     patch 'students/withdraw', to: 'students#withdraw'
-    get 'homes/about'
-  end
 
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
+  }
+
+  #先生用
+  #URL /teachers/sign_in ...
+  devise_for :teachers, skip: [:registrations, :passwords], controllers: {
+    sessions: "teacher/sessions"
   }
 
   # 生徒用
