@@ -1,7 +1,8 @@
 class SchedulesController < ApplicationController
   def new
     @schedule = Schedule.new
-    @schedule.teacher_id = params[:schedule][:teacher_id]
+    # @teacher = current_teacher
+    # @schedule.teacher_id = params[:schedule][:teacher_id]
   end
 
   def create

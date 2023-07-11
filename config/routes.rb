@@ -9,15 +9,15 @@ Rails.application.routes.draw do
   end
   resources :reservations, only: [:show, :edit, :update, :destroy]
   resources :teachers, only: [:index]
-    get 'teachers/information', to: 'teachers#show'
-    get 'teachers/information/edit', to: 'teachers#edit'
-    patch 'teachers/information', to: 'teachers#update'
+    get 'teachers/information/:id', to: 'teachers#show', as: 'teachers_information'
+    get 'teachers/information/:id/edit', to: 'teachers#edit', as: 'edit_teachers_information'
+    patch 'teachers/information/:id', to: 'teachers#update'
     get 'teachers/confirm'
     patch 'teachers/withdraw'
   resources :students, only: [:index]
-    get 'students/information', to: 'students#show'
-    get 'students/information/edit', to: 'students#edit'
-    patch 'students/information', to: 'students#update'
+    get 'students/information/:id', to: 'students#show', as: 'students_information'
+    get 'students/information/:id/edit', to: 'students#edit', as: 'edit_students_information'
+    patch 'students/information/:id', to: 'students#update'
     get 'students/confirm', to: 'students#confirm'
     patch 'students/withdraw', to: 'students#withdraw'
 
