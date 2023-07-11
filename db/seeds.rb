@@ -10,3 +10,32 @@ Admin.create!(
   email: 'admin@example.com',
   password: '123456'
 )
+
+Teacher.create!(
+  last_name: 'Tanaka',
+  first_name: 'Ichiro',
+  email: 'tanaka@example.com',
+  telephone_number: '00000000001',
+  encrypted_password: '123456',
+  specialty: 'business',
+  is_deleted: false,
+)
+
+Teacher.create!(
+  last_name: 'Durand',
+  first_name: 'Louise',
+  email: 'louise@example.com',
+  telephone_number: '00000000002',
+  encrypted_password: '123456',
+  specialty: 'culture',
+  is_deleted: false
+)
+
+Student.create!(
+  last_name: 'Yamda',
+  first_name: 'Tarou',
+  email: 'yamada@example.com',
+  telephone_number: '00000000000',
+  password: '123456',
+  is_deleted: false
+)

@@ -1,29 +1,25 @@
 <h1>シフト登録</h1>
+<div>
+  <!--<div>講師名： %= @teacher.last_name + @teacher.first.name %></div>-->
 
-<%= form_with model: @schedule do |f| %>
-  <h4>①</h4>
-    <%= f.label :勤務日時 %>
-    <%= f.datetime_select :start_time %>
-    <%= f.datetime_select :finish_time %>
-  <h4>②</h4>
-    <%= f.label :勤務日時 %>
-    <%= f.datetime_select :start_time %>
-    <%= f.datetime_select :finish_time %>
-    
-  <h4>③</h4>
-    <%= f.label :勤務日時 %>
-    <%= f.datetime_select :start_time %>
-    <%= f.datetime_select :finish_time %>
-  
-  <h4>④</h4>
-    <%= f.label :勤務日時 %>
-    <%= f.datetime_select :start_time %>
-    <%= f.datetime_select :finish_time %>
-    
-  <h4>⑤</h4>
-    <%= f.label :勤務日時 %>
-    <%= f.datetime_select :start_time %>
-    <%= f.datetime_select :finish_time %>
-    
+<%= form_with model: @schedule, url: admin_schedules_path, method: :post do |f| %>
+  <table>
+    <thead>
+      <tr>
+        <th>勤務日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td>
+        <!--%= f.label :① %>-->
+        <%= f.datetime_select :start_time, :minute_step => 30 %>～
+      <%= f.datetime_select :finish_time, :minute_step => 30 %></td>
+      </tr>
+    </tbody>
+  </table>
   <%= f.submit '登録' %>
+
 <% end %>
+
+</div>

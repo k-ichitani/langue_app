@@ -1,2 +1,9 @@
-<h1>Admin::Schedules#index</h1>
-<p>Find me in app/views/admin/schedules/index.html.erb</p>
+<h1>スケジュール一覧</h1>
+
+<% @schedules.each do |schedule| %>
+  <div>
+    <div><%= schedule.teacher.last_name %><%= schedule.teacher.first_name %></div>
+    <div><%= schedule.start_time %></div>
+    <div ><%= schedule.finish_time %></div>
+  </div>
+<% end %>

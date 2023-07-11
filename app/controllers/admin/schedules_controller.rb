@@ -1,13 +1,16 @@
 class Admin::SchedulesController < ApplicationController
   def new
     @schedule = Schedule.new
+    @schedule.teacher_id = params[:schedule][:teacher_id]
   end
 
   def create
     @schedule = Schedule.new(schedule_params)
+    @schedule.teacher_id = params[:schedule][:teacher_id]
     if @schedule.save
       redirect_to admin_schedules_path, notice: "シフトを登録しました。"
     else
+      puts @schedule.errors.full_messages
       render 'new'
     end
   end
@@ -32,6 +35,6 @@ class Admin::SchedulesController < ApplicationController
   private
 
   def schedule_params
-    params.require(:schedule).permit(:start_time, :finish_time)
+    params.require(:schedule).permit(:start_time, :finish_time, :teacher_id)
   end
 end
