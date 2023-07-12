@@ -6,12 +6,11 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @schedule = Schedule.find(params[:id])
-
-    if @schedule.present?
-      @reservations = @schedule.reservations
+    @schedules = Schedule.all
+    if @schedules.present?
+      @reservations = @schedules.map(&:reservations).flatten
     else
-      flash[error] = '指定されたスケジュールは存在しません'
+      flash[:error] = '予約はありません'
       redirect_to schedules_path
     end
   end
