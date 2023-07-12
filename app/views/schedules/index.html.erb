@@ -2,7 +2,7 @@
 
 <% @schedules.each do |schedule| %>
   <div>
-    <div><%= schedule.teacher.last_name %><%= schedule.teacher.first_name %></div>
+    <div><%= schedule.teacher.first_name %><%= schedule.teacher.last_name %></div>
     <div><%= schedule.start_time %></div>
     <div ><%= schedule.finish_time %></div>
   </div>

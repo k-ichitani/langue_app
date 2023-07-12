@@ -1,15 +1,12 @@
 class SchedulesController < ApplicationController
   def new
     @schedule = Schedule.new
-    # @teacher = current_teacher
-    # @schedule.teacher_id = params[:schedule][:teacher_id]
   end
 
   def create
     @schedule = Schedule.new(schedule_params)
-    @schedule.teacher_id = params[:schedule][:teacher_id]
     if @schedule.save
-      redirect_to admin_schedules_path, notice: "シフトを登録しました。"
+      redirect_to schedules_path, notice: "スケジュールを登録しました。"
     else
       puts @schedule.errors.full_messages
       render 'new'
