@@ -1,7 +1,10 @@
 <div>
-  <h2>講師詳細</h2>
+  <h2>講師詳細 / Détail d'enseignant</h2>
   <% unless student_signed_in? %>
     <table>
+      <tr>
+        <%= image_tag @teacher.get_image(100, 100) %>
+      </tr>
       <tr>
         <th>講師ID</th>
         <td><%= @teacher.id %></td>
@@ -26,16 +29,29 @@
         <th>ステータス</th>
         <td><%= @teacher.is_deleted %></td>
       </tr>
+      <tr>
+        <th>メッセージ</th>
+        <td><%= @teacher.introduction %></td>
+      </tr>
     </table>
   <% else %>
     <table>
       <tr>
+        <td><%= image_tag @teacher.get_image(100, 100) %></td>
+      </tr>
+      <tr>
         <th>氏名</th>
-        <td><%= @teacher.first_name + @teacher.last_name %></td>
+        <td>
+          <%= @teacher.first_name + @teacher.last_name %>
+        </td>
       </tr>
       <tr>
         <th>得意分野</th>
         <td><%= @teacher.specialty %></td>
+      </tr>
+      <tr>
+        <th>メッセージ</th>
+        <td><%= @teacher.introduction %></td>
       </tr>
     </table>
   <% end %>
@@ -45,7 +61,7 @@
     <% elsif admin_signed_in? %>
       <%= link_to "編集する", edit_teachers_information_path %>
     <% else %>
-      <%= link_to "この講師のレッスンを予約する", schdules_path(@teacher) %>
+      <%= link_to "この講師のレッスンを予約する", schedules_path(@schedules) %>
     <% end %>
     <%= link_to '戻る', :back %>
   </div>

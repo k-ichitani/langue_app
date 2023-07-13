@@ -1,5 +1,5 @@
 <div>
-  <h2>講師一覧</h2>
+  <h2>講師一覧 / Enseigants</h2>
   <div>
     <% if admin_signed_in? %>
     <table>
@@ -9,6 +9,7 @@
           <th>氏名</th>
           <th>メールアドレス</th>
           <th>ステータス</th>
+          <th>メッセージ</th>
         </tr>
       </thead>
       <% @teachers.each do |teacher| %>
@@ -16,10 +17,12 @@
         <tr>
           <td><%= teacher.id %></td>
           <td><%= link_to teachers_information_path(teacher) do %>
+          <%= image_tag teacher.get_image(50, 50) %>
           <%= teacher.last_name + teacher.first_name %>
           <% end %></td>
           <td><%= teacher.email %></td>
           <td><%= teacher.is_deleted %></td>
+          <td><%= teacher.introduction %></td>
         </tr>
       </tbody>
       <% end %>
@@ -28,17 +31,18 @@
       <table>
         <thead>
           <tr>
-            <th>講師ID</th>
             <th>氏名</th>
+            <th>メッセージ</th>
           </tr>
         </thead>
         <% @teachers.each do |teacher| %>
         <tbody>
           <tr>
-            <td><%= teacher.id %></td>
             <td><%= link_to teachers_information_path(teacher) do %>
+            <%= image_tag teacher.get_image(50, 50) %>
             <%= teacher.last_name + teacher.first_name %>
             <% end %></td>
+            <td><%= teacher.introduction %></td>
           </tr>
         </tbody>
         <% end %>
