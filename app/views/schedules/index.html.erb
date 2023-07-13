@@ -1,9 +1,17 @@
-<h1>スケジュール一覧</h1>
+<h1>スケジュール / Programme</h1>
 
-<% @schedules.each do |schedule| %>
-  <div>
-    <div><%= schedule.teacher.first_name %><%= schedule.teacher.last_name %></div>
-    <div><%= schedule.start_time %></div>
-    <div ><%= schedule.finish_time %></div>
-  </div>
-<% end %>
+<div><%= link_to '新規スケジュール登録はこちら', new_schedule_path %></div>
+  <% @schedules.each do |schedule| %>
+    <table>
+      <tr>
+        <th>講師名</th>
+        <th>勤務日時</th>
+      </tr>
+      <tr>
+        <td><%= schedule.teacher.first_name %><%= schedule.teacher.last_name %></td>
+        <td><%= schedule.start_time %>～</td>
+        <td><%= schedule.finish_time %></td>
+        <td><%= link_to '詳細へ', schedule_path(schedule) %></td>
+      </tr>
+    </table>
+  <% end %>

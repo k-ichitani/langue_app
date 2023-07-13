@@ -5,6 +5,7 @@ class TeachersController < ApplicationController
 
   def show
     @teacher = Teacher.find(params[:id])
+    @schedules = @teacher.schedules
   end
 
   def edit
@@ -26,7 +27,7 @@ class TeachersController < ApplicationController
   private
 
   def teacher_params
-    params.require(:teacher).permit(:last_name, :first_name, :email, :telephone_number, :specialty, :is_deleted)
+    params.require(:teacher).permit(:last_name, :first_name, :email, :telephone_number, :specialty, :is_deleted, :introduction)
   end
 
 end
