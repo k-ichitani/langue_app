@@ -56,12 +56,10 @@
     </table>
   <% end %>
   <div>
-    <% if @teacher == current_teacher %>
-      <%= link_to "編集する", edit_teachers_information_path %>
-    <% elsif admin_signed_in? %>
+    <% if @teacher == current_teacher || admin_signed_in? %>
       <%= link_to "編集する", edit_teachers_information_path %>
     <% else %>
-      <%= link_to "この講師のレッスンを予約する", schedules_path(@schedules) %>
+      <%= link_to "この講師のレッスンを予約する", schedules_path(teacher_id: @teacher) %>
     <% end %>
     <%= link_to '戻る', :back %>
   </div>

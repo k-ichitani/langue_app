@@ -18,8 +18,8 @@ class SchedulesController < ApplicationController
     # @schedules = Schedule.all
     # @teacher = current_teacher
     # @teacher_schedules = @teacher.schedules
-    if teacher_signed_in?
-      @teacher = current_teacher
+    if current_student.present? && params[:teacher_id].present?
+      @teacher = Teacher.find(params[:teacher_id])
       @schedules = @teacher.schedules
     else
       @schedules = Schedule.all

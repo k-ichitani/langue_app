@@ -1,6 +1,14 @@
 class ReservationsController < ApplicationController
   def new
+    @schedule = Schedule.find(params[:schedule_id])
     @reservation = Reservation.new
+  end
+
+  def confirm
+    @reservation = Reservation.new(reservation_params)
+  end
+
+  def create
   end
 
   def complete
@@ -20,5 +28,10 @@ class ReservationsController < ApplicationController
   end
 
   def edit
+  end
+
+  private
+  def reservation_params
+    params.require(:reservation).permit(:student_id, :schedule_id, :start_time, :finish_time, :status)
   end
 end

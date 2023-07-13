@@ -7,7 +7,9 @@ Rails.application.routes.draw do
       # post 'reservations/confirm', to: 'reservations#confirm'
       # get 'reservations/complete', to: 'reservations#complete'
       # post 'reservation/complete', to: 'reservations#create'
-      post 'confirm', to: 'reservations#confirm'
+      collection do
+        post 'confirm', to: 'reservations#confirm'
+      end
       get 'complete', to: 'reservations#complete'
       post 'complete', to: 'reservations#create'
     end

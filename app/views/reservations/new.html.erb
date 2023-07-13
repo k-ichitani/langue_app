@@ -1,7 +1,30 @@
 <div>
   <h2>新規予約</h2>
+  <%= link_to '予約履歴', reservations_path(current_student) %>
+
+  <h1>スケジュール登録</h1>
   <div>
 
+  <%= form_with model: @reservation, url: confirm_schedule_reservations_path(@schedule) do |f| %>
+    <!--f.hidden_fieldで生徒idを送信-->
+    <%= f.hidden_field :student_id, value: current_student.id %>
+    <table>
+        <tr>
+          <th>予約者氏名</th>
+          <td><%= current_student.first_name + current_student.last_name %></td>
+        </tr>
+        <tr>
+          <th>予約日時</th>
+        </tr>
+        <tr>
+        <td>
+          <%= f.datetime_select :start_time, :minute_step => 30 %>～
+          <%= f.datetime_select :finish_time, :minute_step => 30 %></td>
+        </tr>
+    </table>
+    <%= f.submit '確認画面へ進む' %>
+
+  <% end %>
+
   </div>
-  <%= link_to '予約履歴', reservations_path(current_student) %>
 </div>
