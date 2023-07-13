@@ -1,31 +1,44 @@
 <div>
   <h2>講師詳細</h2>
-  <table>
-    <tr>
-      <th>講師ID</th>
-      <td><%= @teacher.id %></td>
-    </tr>
-    <tr>
-      <th>氏名</th>
-      <td><%= @teacher.first_name + @teacher.last_name %></td>
-    </tr>
-    <tr>
-      <th>メールアドレス</th>
-      <td><%= @teacher.email %></td>
-    </tr>
-    <tr>
-      <th>電話番号</th>
-      <td><%= @teacher.telephone_number %></td>
-    </tr>
-    <tr>
-      <th>得意分野</th>
-      <td><%= @teacher.specialty %></td>
-    </tr>
-    <tr>
-      <th>ステータス</th>
-      <td><%= @teacher.is_deleted %></td>
-    </tr>
-  </table>
+  <% unless student_signed_in? %>
+    <table>
+      <tr>
+        <th>講師ID</th>
+        <td><%= @teacher.id %></td>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <td><%= @teacher.first_name + @teacher.last_name %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @teacher.email %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <td><%= @teacher.telephone_number %></td>
+      </tr>
+      <tr>
+        <th>得意分野</th>
+        <td><%= @teacher.specialty %></td>
+      </tr>
+      <tr>
+        <th>ステータス</th>
+        <td><%= @teacher.is_deleted %></td>
+      </tr>
+    </table>
+  <% else %>
+    <table>
+      <tr>
+        <th>氏名</th>
+        <td><%= @teacher.first_name + @teacher.last_name %></td>
+      </tr>
+      <tr>
+        <th>得意分野</th>
+        <td><%= @teacher.specialty %></td>
+      </tr>
+    </table>
+  <% end %>
   <div>
     <% if @teacher == current_teacher %>
       <%= link_to "編集する", edit_teachers_information_path %>
@@ -34,5 +47,6 @@
     <% else %>
       <%= link_to "この講師のレッスンを予約する", schdules_path(@teacher) %>
     <% end %>
+    <%= link_to '戻る', :back %>
   </div>
 </div>

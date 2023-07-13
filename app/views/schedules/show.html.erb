@@ -6,7 +6,11 @@
       <th>勤務日時</th>
     </tr>
     <tr>
-      <td><%= @schedule.teacher.first_name + @schedule.teacher.last_name %></td>
+      <td>
+        <%= link_to teachers_information_path do %>
+          <%= @schedule.teacher.first_name + @schedule.teacher.last_name %>
+        <% end %>
+      </td>
       <td><%= @schedule.start_time %>～<%= @schedule.finish_time %></td>
     </tr>
   </table>

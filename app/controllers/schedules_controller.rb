@@ -15,15 +15,15 @@ class SchedulesController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.all
-    @teacher = current_teacher
-    @teacher_schedules = @teacher.schedules
-    # if teacher_signed_in?
-    #   @teacher = current_teacher
-    #   @teacher_schedules = @teacher.schedules
-    # else
-    #   @schedules = Schedule.all
-    # end
+    # @schedules = Schedule.all
+    # @teacher = current_teacher
+    # @teacher_schedules = @teacher.schedules
+    if teacher_signed_in?
+      @teacher = current_teacher
+      @schedules = @teacher.schedules
+    else
+      @schedules = Schedule.all
+    end
   end
 
   def show
