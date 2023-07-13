@@ -2,12 +2,18 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get '/about', to: 'homes#about'
   resources :schedules do
-    resources :reservations, only: [:new, :index]
-      post 'reservations/confirm', to: 'reservations#confirm'
-      get 'reservations/complete', to: 'reservations#complete'
-      post 'reservation/complete', to: 'reservations#create'
+    # resources :reservations, only: [:new, :index] # 問題が発生したらこのへん見直して！
+    resources :reservations, only: [:new, :show, :edit, :update, :destroy] do
+      # post 'reservations/confirm', to: 'reservations#confirm'
+      # get 'reservations/complete', to: 'reservations#complete'
+      # post 'reservation/complete', to: 'reservations#create'
+      post 'confirm', to: 'reservations#confirm'
+      get 'complete', to: 'reservations#complete'
+      post 'complete', to: 'reservations#create'
+    end
   end
-  resources :reservations, only: [:show, :edit, :update, :destroy]
+  # resources :reservations, only: [:show, :edit, :update, :destroy] # 問題が発生したらこのへん見直して！
+  resources :reservations, only: [:index]
   resources :teachers, only: [:index]
     get 'teachers/information/:id', to: 'teachers#show', as: 'teachers_information'
     get 'teachers/information/:id/edit', to: 'teachers#edit', as: 'edit_teachers_information'

@@ -20,7 +20,7 @@
             <ul class="navbar-nav ml-auto">
               <% if student_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to schedules_path do %>
+                  <%= link_to new_schedule_reservation_path do %>
                   <i class="fas fa-calendar"></i>予約
                   <% end %>
                 </li>
@@ -42,7 +42,7 @@
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to schedule_reservations_path do %>
+                  <%= link_to reservations_path do %>
                   <i class="fas fa-calendar"></i>予約一覧
                   <% end %>
                 </li>
@@ -68,12 +68,12 @@
                 </li>
               <% elsif teacher_signed_in? %>
                 <li class="nav-item">
-                  <!--%= link_to schedule_reservations_path do %>-->
+                  <%= link_to reservations_path(current_teacher) do %>
                   <i class="fas fa-calendar"></i>予約一覧
-                  <!--% end %>-->
+                  <% end %>
                 <li class="nav-item">
                   <%= link_to schedules_path(current_teacher) do %>
-                  <i class="far fa-calendar-check"></i>マイスケジュール
+                  <i class="far fa-calendar-check"></i>スケジュール
                   <% end %>
                 </li>
                 <li class="nav-item">

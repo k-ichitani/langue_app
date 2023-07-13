@@ -1,2 +1,25 @@
-<h1>Schedules#edit</h1>
-<p>Find me in app/views/schedules/edit.html.erb</p>
+<div>
+  <h2>スケジュール変更</h2>
+  <div>
+    <%= form_with model: @schedule, url: schedule_path(@schedule), method: :patch do |f| %>
+      <!--f.hidden_fieldで講師idを送信-->
+      <%= f.hidden_field :teacher_id, value: current_teacher.id %>
+      <table>
+          <tr>
+            <th>講師名</th>
+            <td><%= @schedule.teacher.first_name + @schedule.teacher.last_name %></td>
+          </tr>
+          <tr>
+            <th>勤務日時</th>
+          </tr>
+          <tr>
+          <td>
+            <%= f.datetime_select :start_time, :minute_step => 30 %>～
+            <%= f.datetime_select :finish_time, :minute_step => 30 %></td>
+          </tr>
+      </table>
+      <%= f.submit '変更' %>
+      <div><%= link_to '戻る', :back %></div>
+    <% end %>
+  </div>
+</div>
