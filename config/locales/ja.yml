@@ -184,7 +184,6 @@ ja:
         other: "その他"
     reservation:
       status:
-        accepting_reservations: "予約受付中"
         reserved: "予約済"
         completed: "受講済"
         canceled: "キャンセル済"

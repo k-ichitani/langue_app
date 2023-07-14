@@ -1,8 +1,6 @@
 <div>
   <h2>新規予約</h2>
   <%= link_to '予約履歴', reservations_path(current_student) %>
-
-  <h1>スケジュール登録</h1>
   <div>
 
   <%= form_with model: @reservation, url: confirm_schedule_reservations_path(@schedule) do |f| %>
@@ -19,7 +17,10 @@
         <tr>
         <td>
           <%= f.datetime_select :start_time, :minute_step => 30 %>～
-          <%= f.datetime_select :finish_time, :minute_step => 30 %></td>
+          <%= f.datetime_select :finish_time, :minute_step => 30 %>
+          <!--%= f.select :schedule_id, options_from_collection_for_select(Schedule.all, :id, :start_time), :minute_step => 30 %>～-->
+          <!--%= f.select :schedule_id, options_from_collection_for_select(Schedule.all, :id, :finish_time), :minute_step => 30 %>-->
+        </td>
         </tr>
     </table>
     <%= f.submit '確認画面へ進む' %>

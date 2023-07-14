@@ -1,5 +1,5 @@
 <div>
-  <h2>講師情報編集 / Modification d'information d'enseignant</h2>
+  <h2>講師情報編集 / Modifier d'information</h2>
   <div>
     <%= form_with model: @teacher, url: teachers_information_path, method: :patch do |f| %>
       <div>
@@ -43,6 +43,7 @@
         <%= f.text_area :introduction %>
       </div>
       <%= f.submit '変更を保存' %>
+      <%= link_to '戻る', :back %>
     <% end %>
   </div>
 </div>

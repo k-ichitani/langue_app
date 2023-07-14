@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.all
+    @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 3).order(day: :desc)
     if @schedules.present?
       @reservations = @schedules.map(&:reservations).flatten
     else

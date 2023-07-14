@@ -21,6 +21,9 @@ class SchedulesController < ApplicationController
     if current_student.present? && params[:teacher_id].present?
       @teacher = Teacher.find(params[:teacher_id])
       @schedules = @teacher.schedules
+    elsif teacher_signed_in?
+      @teacher = current_teacher
+      @schedules = @teacher.schedules
     else
       @schedules = Schedule.all
     end
