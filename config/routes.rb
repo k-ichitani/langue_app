@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/about', to: 'homes#about'
   resources :schedules do
     # resources :reservations, only: [:new, :index] # 問題が発生したらこのへん見直して！
-    resources :reservations, only: [:new, :show, :edit, :update, :destroy] do
+    resource :reservation, only: [:new, :show, :edit, :update, :destroy] do
       # post 'reservations/confirm', to: 'reservations#confirm'
       # get 'reservations/complete', to: 'reservations#complete'
       # post 'reservation/complete', to: 'reservations#create'

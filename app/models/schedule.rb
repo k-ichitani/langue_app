@@ -7,14 +7,15 @@ class Schedule < ApplicationRecord
   validates :finish_time, presence: true
 
   def self.schedules_after_three_month
-    schedules = Schedule.all.where("start_time >= ?", Date.current).where("start_time < ?", Date.current >> 3).order(start_time: :desc)
+    schedules = Schedule.all.where("start_time >= ?", Date.current).where("start_time < ?", Date.current >> 2).order(start_time: :desc)
     schedule_data = []
     schedules.each do |schedule|
       # schedules_hash = {}
       # schedules_hash.merge!(day: schedule.day.strftime("%Y-%m-%d"), time: schedule.time)
       # schedule_data.push(schedules_hash)
-      duration = schedule.finish_time - schedule.start_time
-      schedules_hash = { day: schedule.start_time.to_date, time: schedule.start_time.strftime("%H:%M"), duration: duration }
+      # duration = schedule.finish_time - schedule.start_time
+      # schedules_hash = { day: schedule.start_time.to_date, time: schedule.start_time.strftime("%H:%M"), duration: duration }
+      schedules_hash = { day: schedule.start_time.to_date, time: schedule.start_time.strftime("%H:%M") }
       schedule_data.push(schedules_hash)
     end
     schedule_data

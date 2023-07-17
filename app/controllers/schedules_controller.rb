@@ -15,9 +15,6 @@ class SchedulesController < ApplicationController
   end
 
   def index
-    # @schedules = Schedule.all
-    # @teacher = current_teacher
-    # @teacher_schedules = @teacher.schedules
     if current_student.present? && params[:teacher_id].present?
       @teacher = Teacher.find(params[:teacher_id])
       @schedules = @teacher.schedules
@@ -26,11 +23,13 @@ class SchedulesController < ApplicationController
       @schedules = @teacher.schedules
     else
       @schedules = Schedule.all
+      # @teacher = @schedules.teacher
     end
   end
 
   def show
     @schedule = Schedule.find(params[:id])
+    @teacher = @schedule.teacher
   end
 
   def edit

@@ -1,10 +1,11 @@
-@use '~bootstrap/scss/bootstrap';
-*= require simple_calendar
+@import '~bootstrap/scss/bootstrap';
 
 .simple-calendar {
   .day {}
 
-  .wday-0 {}
+  .wday-0 {
+    // background-color: red;
+  }
   .wday-1 {}
   .wday-2 {}
   .wday-3 {}

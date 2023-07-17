@@ -50,20 +50,35 @@ module SchedulesHelper
             "23:30"]
   end
 
-  def check_schedule(schedules, day, time)
-    result = false
-    schedules_count = schedules.count
-    if schedules_count > 1
-      schedules.each do |schedule|
-        # result = schedule[:day].eql?(day.strftime("%Y-%m-%d")) && schedule[:time].eql?(time)
-        result = schedule[:start_time].eql?(day) && schedule[:finish_time].eql?(time)
-        return result if result
+  def check_schedule(day, time)
+    check_time = Time.zone.parse("#{day} #{time}")
+
+    @schedules.each do |schedule|
+      # check_time  7/15 19:00 <= ここが○ になるか、-になるかを知りたい
+      # schedule.start_time: 7/15 19:00
+      # schedule.finish_time: 7/15 21:00
+      if schedule.start_time <= check_time && check_time < schedule.finish_time
+        #byebug
+        return true
       end
-    elsif schedules_count == 1
-      # result = schedules[0][:day].eql?(day.strftime("%Y-%m-%d")) && schedules[0][:time].eql?(time)
-      schedule = schedules[0][:start_time].eql?(day) && schedule[:finish_time].eql?(time)
-      return result if result
     end
-    return result
+
+    return false
+  end
+
+  def teacher_name(day, time)
+    check_time = Time.zone.parse("#{day} #{time}")
+
+    @schedules.each do |schedule|
+      # check_time  7/15 19:00 <= ここが○ になるか、-になるかを知りたい
+      # schedule.start_time: 7/15 19:00
+      # schedule.finish_time: 7/15 21:00
+      # if schedule.start_time <= check_time && check_time < schedule.finish_time
+        return schedule.teacher.last_name
+      # else
+
+        # return ''
+      # end
+    end
   end
 end

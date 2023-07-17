@@ -3,16 +3,23 @@
   <%= link_to '予約履歴', reservations_path(current_student) %>
   <div>
 
-  <%= form_with model: @reservation, url: confirm_schedule_reservations_path(@schedule) do |f| %>
+  <%= form_with model: @reservation, url: confirm_schedule_reservation_path(@schedule) do |f| %>
     <!--f.hidden_fieldで生徒idを送信-->
     <%= f.hidden_field :student_id, value: current_student.id %>
+    <%= f.hidden_field :schedule_id, value: @schedule.id %>
     <table>
         <tr>
           <th>予約者氏名</th>
           <td><%= current_student.first_name + current_student.last_name %></td>
         </tr>
         <tr>
-          <th>予約日時</th>
+          <th>予約情報</th>
+        </tr>
+        <tr>
+          <td>講師:<%= @schedule.teacher.last_name + @schedule.teacher.first_name %></td>
+        </tr>
+        <tr>
+          <td>講師の選択可能日時：<%= @schedule.start_time %>〜<%= @schedule.finish_time %></td>
         </tr>
         <tr>
         <td>

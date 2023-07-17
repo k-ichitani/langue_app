@@ -1,5 +1,6 @@
 <div>
   <h2>スケジュール詳細</h2>
+  <div>
   <table>
     <tr>
       <th>講師名</th>
@@ -19,5 +20,7 @@
     <%= link_to '変更する', edit_schedule_path %>
     <%= link_to '削除する', schedule_path(@schedule), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     <% end %>
+  </div>
+  <!--% end %>-->
   </div>
 </div>

@@ -39,13 +39,16 @@
           <tr>
             <td><%= time %></td>
             <% week.each do |day| %>
+            <tr>
             <td>
-              <% if check_schedule(schedules, day, time) %>
-                <% '-' %>
+              <% if check_schedule(day, time) %>
+                ○
+                <%= teacher_name(day, time) %>
               <% else %>
-                <%= '○' %>
+                ×
               <% end %>
             </td>
+            </tr>
             <% end %>
           </tr>
         <% end %>
