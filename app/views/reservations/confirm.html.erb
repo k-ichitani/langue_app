@@ -14,6 +14,7 @@
       <%= f.hidden_field :schedule_id, value: @schedule.id %>
       <%= f.submit '確定する' %>
     <% end %>
+    <%= link_to '予約をやめる', schedules_path %>
 
 
     <%#= link_to '確定する',complete_schedule_reservation_path(@schedule.id), method: :post %>

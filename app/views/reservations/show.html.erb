@@ -1,4 +1,21 @@
 
 <div>
   <div>予約詳細画面</div>
+  <table>
+  <tr>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td>受講者氏名：<%= reservation.student.last_name + reservation.student.first_name %></td>
+      </tr>
+      <tr>
+        <td>受講予定時間：<%= reservation.start_time %>〜<%= reservation.finish_time %></td>
+      </tr>
+      <tr>
+        <td>予約確定日時：<%= reservation.created_at %></td>
+      </tr>
+        <td>削除する</td>
+      </tr>
+    <% end %>
+    </tr>
+  </table>
 </div>

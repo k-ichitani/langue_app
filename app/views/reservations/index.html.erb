@@ -1,17 +1,38 @@
 <div>予約一覧</div>
 <div>
+  <% if admin_signed_in? %>
   <% if flash[:error] %>
     <div class="alert alert-danger">
       <%= flash[:error] %>
     </div>
   <% end %>
-
-  予約履歴
-</div>
+  <table>
+  <tr>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.student.last_name + reservation.student.first_name %></td>
+        <td><%= reservation.start_time %></td>
+        <td><%= reservation.finish_time %></td>
+      </tr>
+    <% end %>
+    </tr>
+    </table>
+<% elsif student_signed_in? %>
+予約履歴
 <div>
+<table>
+<tr>
   <% @reservations.each do |reservation| %>
-    <%= reservation.student.last_name %>
-    <%= reservation.start_time %>
-    <%= reservation.finish_time %>
+    <tr>
+      <td>受講者氏名：<%= reservation.student.last_name + reservation.student.first_name %></td>
+    </tr>
+    <tr>
+      <td>受講日：<%= reservation.start_time.year %>年<%= reservation.start_time.month %>月<%= reservation.start_time.day %>日</td>
+      <td><%= link_to '詳細', schedule_reservation_path(reservation.schedule_id, reservation) %></td>
+    </tr>
   <% end %>
+  </tr>
+  </table>
+</div>
+<% end %>
 </div>

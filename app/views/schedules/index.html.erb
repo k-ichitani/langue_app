@@ -1,11 +1,17 @@
+<div class="container">
 <h1>スケジュール / Programme</h1>
 
-<div>
+<div class="row">
   <% if teacher_signed_in? || admin_signed_in? %>
     <%= link_to '新規スケジュール登録はこちら', new_schedule_path %>
+  <% elsif student_signed_in? %>
+  <div><%= link_to '予約履歴', reservations_path %></div>
+  <div class="w-100"></div>
+  <div><%= link_to "講師から選ぶ", teachers_path %></div>
   <% end %>
+
 </div>
-<div>
+<div class="col">
 <%= week_calendar events: @schedules do |date, schedules| %>
   <%= date.day %>
 <% end %>
@@ -30,3 +36,4 @@
       </tr>
     </table>
   <% end %>
+</div>

@@ -1,7 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 
 .simple-calendar {
-  .day {}
+  width: 100%;
+
+  .hour {
+    display: flex;
+  }
+
+  .day {
+  }
 
   .wday-0 {
     // background-color: red;
