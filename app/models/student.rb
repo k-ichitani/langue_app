@@ -13,6 +13,11 @@ class Student < ApplicationRecord
   validates :encrypted_password, presence: true
   validates :is_deleted, inclusion: {in: [true, false ]}
 
+  def active_for_authentication?
+    # is_deletedがfalseならtrueを返すようにしている
+    super && (is_deleted == false)
+  end
+
   GUEST_USER_EMAIL = "guest@example.com"
 
   def self.guest

@@ -8,3 +8,10 @@
 
   予約履歴
 </div>
+<div>
+  <% @reservations.each do |reservation| %>
+    <%= reservation.student.last_name %>
+    <%= reservation.start_time %>
+    <%= reservation.finish_time %>
+  <% end %>
+</div>

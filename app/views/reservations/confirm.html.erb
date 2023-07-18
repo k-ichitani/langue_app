@@ -1,0 +1,22 @@
+<div>
+  確認画面
+  <div>
+    <%= @student.last_name + @student.first_name %>
+    <%= @reservation.start_time %>〜<%= @reservation.finish_time %>
+    <p>こちらの内容で予約を確定します。<br>
+    よろしいですか？</p>
+  </div>
+  <div>
+    <%= form_with model: @reservation, url:  complete_schedule_reservation_path(@schedule) do |f| %>
+      <%= f.hidden_field :start_time, value: @reservation.start_time %>
+      <%= f.hidden_field :finish_time, value: @reservation.finish_time %>
+      <%= f.hidden_field :student_id, value: current_student.id %>
+      <%= f.hidden_field :schedule_id, value: @schedule.id %>
+      <%= f.submit '確定する' %>
+    <% end %>
+
+
+    <%#= link_to '確定する',complete_schedule_reservation_path(@schedule.id), method: :post %>
+    <%#= link_to '確定する', schedule_reservation_complete_path(@schedule.id, @reservation.id), method: :post %>
+  </div>
+</div>

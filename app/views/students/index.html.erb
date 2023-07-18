@@ -1,5 +1,5 @@
 <div>
-  <h1>生徒一覧</h1>
+  <h1>生徒一覧 / Apprenants</h1>
   <div>
       <table>
         <thead>
@@ -18,7 +18,13 @@
             <%= student.last_name + student.first_name %>
             <% end %></td>
             <td><%= student.email %></td>
-            <td><%= student.is_deleted %></td>
+            <td>
+              <% if student.is_deleted %>
+                退会
+              <% else %>
+                有効
+              <% end %>
+            </td>
           </tr>
         </tbody>
         <% end %>

@@ -21,7 +21,13 @@
           <%= teacher.last_name + teacher.first_name %>
           <% end %></td>
           <td><%= teacher.email %></td>
-          <td><%= teacher.is_deleted %></td>
+          <td>
+            <% if teacher.is_deleted %>
+              退会
+            <% else %>
+              有効
+            <% end %>
+          </td>
           <td><%= teacher.introduction %></td>
         </tr>
       </tbody>

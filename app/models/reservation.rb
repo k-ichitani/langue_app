@@ -8,6 +8,6 @@ class Reservation < ApplicationRecord
   validates :finish_time, presence: true
   validates :status, presence: true
 
-  enum status: { accepting_reservations:0, reserved:1, completed:2, canceled:3 }
+  enum status: { reserved:0, completed:1, canceled:2 }
 
 end

@@ -1,5 +1,5 @@
 <div>
-  <h2>会員詳細ページ</h2>
+  <h2>会員詳細 / Détail d'apprenant</h2>
   <div>
     <table>
       <thead>
@@ -19,7 +19,13 @@
           <td><%= @student.first_name %></td>
           <td><%= @student.email %></td>
           <td><%= @student.telephone_number %></td>
-          <td><%= @student.is_deleted %></td>
+          <td>
+            <% if @student.is_deleted %>
+              退会
+            <% else %>
+              有効
+            <% end %>
+          </td>
         </tr>
       </tbody>
     </table>
