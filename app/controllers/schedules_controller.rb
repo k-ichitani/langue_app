@@ -17,12 +17,12 @@ class SchedulesController < ApplicationController
   def index
     if current_student.present? && params[:teacher_id].present?
       @teacher = Teacher.find(params[:teacher_id])
-      @schedules = @teacher.schedules
+      @schedules = @teacher.schedules.where("start_time >= ?", Date.current).order(start_time: :asc)
     elsif teacher_signed_in?
       @teacher = current_teacher
-      @schedules = @teacher.schedules
+      @schedules = @teacher.schedules.order(start_time: :desc)
     else
-      @schedules = Schedule.all
+      @schedules = Schedule.all.order(start_time: :desc)
       # @teacher = @schedules.teacher
     end
   end
@@ -59,4 +59,5 @@ class SchedulesController < ApplicationController
   def schedule_params
     params.require(:schedule).permit(:start_time, :finish_time, :teacher_id)
   end
+  
 end

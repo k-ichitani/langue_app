@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     patch 'students/information/:id', to: 'students#update'
     get 'students/confirm', to: 'students#confirm'
     patch 'students/withdraw', to: 'students#withdraw'
+  resources :contacts, only: [:new, :create]
 
   # 管理者用
   # URL /admin/sign_in ...

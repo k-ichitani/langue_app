@@ -1,5 +1,7 @@
-<div>
-  <h2>講師詳細 / Détail d'enseignant</h2>
+<div class="container">
+  <div class="row-md-10 mt-3 h2">
+    講師詳細 / Détail d'enseignant
+  </div>
   <% unless student_signed_in? %>
     <table>
       <tr>
@@ -23,7 +25,7 @@
       </tr>
       <tr>
         <th>得意分野</th>
-        <td><%= @teacher.specialty %></td>
+        <td><%= @teacher.specialty_i18n %></td>
       </tr>
       <tr>
         <th>ステータス</th>

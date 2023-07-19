@@ -1,15 +1,17 @@
-<div>
-  <h2>講師一覧 / Enseigants</h2>
-  <div>
+<div class="container">
+  <div class="row-md-8 offset-2 mt-5 h2">
+    講師一覧 / Enseigants
+  </div>
+  <div class="row-md-8 offset-2 mt-4">
     <% if admin_signed_in? %>
     <table>
       <thead>
         <tr>
-          <th>講師ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
-          <th>メッセージ</th>
+          <th class="text-nowrap", style="width: 10%">講師ID</th>
+          <th class="text-nowrap", style="width: 25%">氏名</th>
+          <th class="text-nowrap", style="width: 25%">メールアドレス</th>
+          <th class="text-nowrap", style="width: 15%">ステータス</th>
+          <th class="text-nowrap",style="width: 20%">メッセージ</th>
         </tr>
       </thead>
       <% @teachers.each do |teacher| %>
@@ -28,7 +30,7 @@
               有効
             <% end %>
           </td>
-          <td><%= teacher.introduction %></td>
+          <td class="text-truncate"><%= teacher.introduction %></td>
         </tr>
       </tbody>
       <% end %>
@@ -37,8 +39,8 @@
       <table>
         <thead>
           <tr>
-            <th>氏名</th>
-            <th>メッセージ</th>
+            <th class="text-nowrap">氏名</th>
+            <th class="text-nowrap">メッセージ</th>
           </tr>
         </thead>
         <% @teachers.each do |teacher| %>
@@ -48,7 +50,7 @@
             <%= image_tag teacher.get_image(50, 50) %>
             <%= teacher.last_name + teacher.first_name %>
             <% end %></td>
-            <td><%= teacher.introduction %></td>
+            <td class="text-truncate"><%= teacher.introduction %></td>
           </tr>
         </tbody>
         <% end %>

@@ -1,32 +1,37 @@
-<h1>会員情報編集 / Modifier d'information</h1>
-<div>
+<div class="container">
+  <div class="row-md-8 offset-2 mt-5 h2">
+    会員情報編集 / Modifier d'information
   <% if @student.email == 'guest@example.com' %>
     <p>ゲストユーザーはユーザー情報の編集ができません。</p>
   <% end %>
+  </div>
 
-  <div>
+  <div class="row-md-8 offset-2 mt-4">
     <%= form_with model: @student, url: students_information_path, method: :patch do |f| %>
     <table>
       <tr>
-        <th>会員ID</th>
+        <th style="width: 60%", class="text-center">会員ID</th>
         <td><%= @student.id %></td>
       </tr>
       <tr>
-        <th>姓（ローマ字）</th>
+        <th style="width: 60%", class="text-center">姓（ローマ字）</th>
         <td><%= f.text_field :last_name %></td>
-        <th>名（ローマ字）</th>
+      </tr>
+      <tr>
+        <th style="width: 60%", class="text-center">名（ローマ字）</th>
         <td><%= f.text_field :first_name %></td>
       </tr>
       <tr>
-        <th>メールアドレス</th>
+        <th style="width: 60%", class="text-center">メールアドレス</th>
         <td><%= f.text_field :email %></td>
       </tr>
       <tr>
-        <th>電話番号</th>
+        <th style="width: 60%", class="text-center">電話番号</th>
         <td><%= f.text_field :telephone_number %></td>
       </tr>
+      <% if admin_signed_in? %>
       <tr>
-        <th>会員ステータス</th>
+        <th style="width: 60%", class="text-center">会員ステータス</th>
         <td>
           <% if admin_signed_in? %>
             <%= f.radio_button :is_deleted, "false" %>
@@ -34,11 +39,14 @@
             <%= f.radio_button :is_deleted, "true" %>
             <%= f.label :is_deleted_true, "退会" %></td>
           <% else %>
-            <%= @student.is_deleted %>
+            <%= @student.is_deleted ? '退会' : '有効' %>
           <% end %>
       </tr>
+      <% end %>
     </table>
-    <%= f.submit '変更を保存する' %>
+    <div class="row-md-7 offset-3 mt-3">
+      <%= f.submit '変更を保存する', class: "btn btn-success" %>
+    </div>
     <% end %>
   </div>
 </div>

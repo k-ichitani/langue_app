@@ -15,3 +15,7 @@
  *
  *= require simple_calendar
  */
+
+main {
+  background-image: url('/images/paris.jpg');
+}

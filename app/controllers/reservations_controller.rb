@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
   def new
     @schedule = Schedule.find(params[:schedule_id])
     @reservation = Reservation.new
+    @day = params[:day]
   end
 
   def confirm
@@ -41,7 +42,7 @@ class ReservationsController < ApplicationController
   end
 
   def show
-    # @reservation = Reservation.find(params[:id])
+    @reservation = Reservation.find(params[:id])
 
   end
 

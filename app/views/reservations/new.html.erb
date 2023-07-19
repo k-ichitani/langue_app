@@ -24,6 +24,7 @@
           </tr>
           <tr>
           <td>
+            <%= @day %>
             <%= f.datetime_select :start_time, :minute_step => 30 %>～
             <%= f.datetime_select :finish_time, :minute_step => 30 %>
             <!--%= f.select :schedule_id, options_from_collection_for_select(Schedule.all, :id, :start_time), :minute_step => 30 %>～-->
