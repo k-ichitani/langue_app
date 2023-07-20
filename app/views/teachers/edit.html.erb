@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row-md-8 offset-2 mt-5 h2">講師情報編集 / Modifier d'information</div>
-  <div>
+  <div class="row--md-8 offset-2 mt-3">
     <%= form_with model: @teacher, url: teachers_information_path, method: :patch do |f| %>
       <div>
         <%= f.label :プロフィール画像 %>
@@ -35,7 +35,7 @@
           <%= f.radio_button :is_deleted, "true" %>
           <%= f.label :is_deleted_true, "退会" %>
         <% else %>
-          <%= @teacher.is_deleted %>
+          <%= @teacher.is_deleted ? '退会' : '有効' %>
         <% end %>
       </div>
       <div>

@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
 #   if params[:schedule]["start_time(5i)"] == 30
 #     start_koma += 1
 #   end
-#   
+#
 #   end_date = Date.new(params[:schedule]["finish_time(1i)"], params[:schedule]["finish_time(2i)"], params[:schedule]["finish_time(3i)"])
 #   end_koma = params[:schedule]["finish_time(4i)"] * 2
 #   if params[:schedule]["finish_time(5i)"] == 30
@@ -40,6 +40,7 @@ class SchedulesController < ApplicationController
     if current_student.present? && params[:teacher_id].present?
       @teacher = Teacher.find(params[:teacher_id])
       @schedules = @teacher.schedules.where("start_time >= ?", Date.current).order(start_time: :asc)
+      @reservations = @schedules.reservation
     elsif teacher_signed_in?
       @teacher = current_teacher
       @schedules = @teacher.schedules.order(start_time: :desc)

@@ -9,28 +9,28 @@
         <%= image_tag @teacher.get_image(100, 100) %>
       </tr>
       <tr>
-        <th>講師ID</th>
+        <th class="text-nowrap">講師ID</th>
         <td><%= @teacher.id %></td>
       </tr>
       <tr>
-        <th>氏名</th>
+        <th class="text-nowrap">氏名</th>
         <td><%= @teacher.first_name + @teacher.last_name %></td>
       </tr>
       <tr>
-        <th>メールアドレス</th>
+        <th class="text-nowrap">メールアドレス</th>
         <td><%= @teacher.email %></td>
       </tr>
       <tr>
-        <th>電話番号</th>
+        <th class="text-nowrap">電話番号</th>
         <td><%= @teacher.telephone_number %></td>
       </tr>
       <tr>
-        <th>得意分野</th>
+        <th class="text-nowrap">得意分野</th>
         <td><%= @teacher.specialty_i18n %></td>
       </tr>
       <tr>
-        <th>ステータス</th>
-        <td>
+        <th class="text-nowrap">ステータス</th>
+        <td class="text-nowrap">
           <% if @teacher.is_deleted %>
             退会
           <% else %>
@@ -39,7 +39,7 @@
         </td>
       </tr>
       <tr>
-        <th>メッセージ</th>
+        <th class="text-nowrap">メッセージ</th>
         <td><%= @teacher.introduction %></td>
       </tr>
     </table>

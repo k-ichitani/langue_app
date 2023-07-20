@@ -6,8 +6,8 @@ class Student < ApplicationRecord
 
   has_many :reservations
 
-  validates :last_name, presence: true
-  validates :first_name, presence: true
+  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "は半角英字で入力してください" }
+  validates :first_name, presence: true, format: { with: /^[a-zA-Z]+$/, message: "は半角英字で入力してください" ,:multiline => true }
   validates :email, presence: true
   validates :telephone_number, presence: true
   validates :encrypted_password, presence: true

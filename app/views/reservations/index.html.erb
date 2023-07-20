@@ -14,8 +14,8 @@
             <td>受講者氏名：<%= reservation.student.last_name + reservation.student.first_name %></td>
           </tr>
           <tr>
-            <td>受講予定日：<%= reservation.start_time.strftime("%Y-%m-%d %H:%M") %>〜</td>
-            <td><%= reservation.finish_time.strftime("%Y-%m-%d %H:%M") %></td>
+            <td>受講予定日：<%= reservation.schedule.start_time.strftime("%Y-%m-%d %H:%M") %>〜</td>
+            <td><%= reservation.finish_time.schedule.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= link_to '詳細', schedule_reservation_path(schedule_id: reservation.schedule_id, id: reservation.id) %></td>
           </tr>
         <% end %>
@@ -34,7 +34,7 @@
               <td>受講者氏名：<%= reservation.student.last_name + reservation.student.first_name %></td>
             </tr>
             <tr>
-              <td>受講予定日：<%= reservation.start_time.year %>年<%= reservation.start_time.month %>月<%= reservation.start_time.day %>日</td>
+              <td>受講予定日：<%= reservation.schedule.start_time.year %>年<%= reservation.schedule.start_time.month %>月<%= reservation.schedule.start_time.day %>日</td>
               <td><%= link_to '詳細', schedule_reservation_path(schedule_id: reservation.schedule_id, id: reservation.id) %></td>
             </tr>
           <% end %>

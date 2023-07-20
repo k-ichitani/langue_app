@@ -41,6 +41,21 @@ module SchedulesHelper
     return false
   end
 
+  def check_reservation(day, time)
+    check_time = Time.zone.parse("#{day} #{time}")
+
+    @reservations.each do |reservation|
+      # check_time  7/15 19:00 <= ここが○ になるか、-になるかを知りたい
+      # schedule.start_time: 7/15 19:00
+      # schedule.finish_time: 7/15 21:00
+      if reservation.start_time == check_time && check_time < reservation.finish_time
+        return true
+      end
+    end
+    return false
+  end
+
+
   # def teacher_name(day, time)
   #   check_time = Time.zone.parse("#{day} #{time}")
 

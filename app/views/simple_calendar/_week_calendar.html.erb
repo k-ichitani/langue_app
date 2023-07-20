@@ -49,6 +49,10 @@
                 <%#= link_to schedule_path(@schedule) do %>
                 <%#= teacher_name(day, time) %>
                 <%# end %>
+              <%# elsif check_reservation(day, time) %>
+                <!--<td class="cross text-center">-->
+                <!--  ×-->
+                <!--</td>-->
               <% else %>
                 <td class="cross text-center">
                   ×

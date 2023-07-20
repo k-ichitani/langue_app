@@ -335,11 +335,25 @@ ja:
     errors:
       models:
         schedule:
+        student:
           attributes:
             teacher:
               required: '講師は必須です'
+            email:
+              blank: 'は入力してください'
+            password:
+              blank: 'は入力してください'
+            last_name:
+              blank: 'は入力してください'
+            first_name:
+              blank: 'は入力してください'
+            telephone_number:
+              blank: 'は入力してください'
+            encrypted_password:
+              blank: 'は入力してください'
             teacher_id:
               blank: '講師IDは入力してください'
+      messages:
 
   devise:
     confirmations:
