@@ -41,7 +41,7 @@
             <% week.each do |day| %>
             <div class="hour text-center">
               <% if check_schedule(day, time) %>
-                <td class="text-center">
+                <td class="circle text-center">
                   <%#= link_to new_schedule_reservation_path(schedule_id: @schedule_id, day: day) do %>
                   ○
                   <%# end %>
@@ -50,7 +50,7 @@
                 <%#= teacher_name(day, time) %>
                 <%# end %>
               <% else %>
-                <td class="text-center table-secondary">
+                <td class="cross text-center">
                   ×
                 </td>
               <% end %>

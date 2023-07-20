@@ -1,6 +1,6 @@
-<div class="container">
-  <h1>スケジュール / Programme</h1>
-  
+<div class="container mb-5 mt-5">
+  <h2>スケジュール / Programme</h2>
+
   <div class="row">
     <% if teacher_signed_in? || admin_signed_in? %>
       <%= link_to '新規スケジュール登録はこちら', new_schedule_path %>
@@ -11,15 +11,16 @@
     <% end %>
   </div>
   <div class="row">
-  <div class="col-md-8 offset-2">
+  <div class="col-md-9 offset-1">
   <%= week_calendar events: @schedules do |date, schedules| %>
     <%= date.day %>
   <% end %>
   </div>
   </div>
-  
+
+  <div class="row">
   <% @schedules.each do |schedule| %>
-    <div class="row-md-7 offset-3">
+    <div class="col-md-7 offset-3">
       <table>
         <tr>
           <th style="width: 20%">講師名</th>

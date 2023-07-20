@@ -1,7 +1,8 @@
 <div class="container">
-  <div class="row-md-10 mt-3 h2">
+  <div class="row-md-8 offset-2 mt-5 h2">
     講師詳細 / Détail d'enseignant
   </div>
+  <div class="row--md-8 offset-2 mt-3">
   <% unless student_signed_in? %>
     <table>
       <tr>
@@ -60,10 +61,11 @@
       <tr>
         <th>メッセージ</th>
         <td><%= @teacher.introduction %></td>
-      </tr>
     </table>
   <% end %>
-  <div>
+  </tr>
+  </div>
+  <div class="row--md-8 offset-2 mt-3">
     <% if @teacher == current_teacher || admin_signed_in? %>
       <%= link_to "編集する", edit_teachers_information_path %>
     <% else %>

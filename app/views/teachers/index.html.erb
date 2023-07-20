@@ -30,7 +30,7 @@
               有効
             <% end %>
           </td>
-          <td class="text-truncate"><%= teacher.introduction %></td>
+          <td><div class="text-truncate w-50"><%= teacher.introduction %></div></td>
         </tr>
       </tbody>
       <% end %>
@@ -50,7 +50,7 @@
             <%= image_tag teacher.get_image(50, 50) %>
             <%= teacher.last_name + teacher.first_name %>
             <% end %></td>
-            <td class="text-truncate"><%= teacher.introduction %></td>
+            <td><div class="text-truncate w-50"><%= teacher.introduction %></div></td>
           </tr>
         </tbody>
         <% end %>

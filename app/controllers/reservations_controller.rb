@@ -32,9 +32,14 @@ class ReservationsController < ApplicationController
   def index
     # @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 2).order(day: :desc)
     @schedules = Schedule.all
-    if @schedules.present?
-      @reservations = @schedules.map(&:reservations).flatten
+    if @schedules.present? && student_signed_in?
+      @student = current_student
+      @reservations = @student.reservations
       # @student = @reservations.student_id
+    elsif @schedules.present? && admin_signed_in?
+      @reservations = @schedules.map(&:reservations).flatten
+    elsif @schedules.present? && teacher_signed_in?
+      @reservations = @schedules.map(&:reservations).flatten
     else
       flash[:error] = '予約はありません'
       redirect_to schedules_path
