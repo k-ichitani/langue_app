@@ -1,11 +1,55 @@
 @import '~bootstrap/scss/bootstrap';
 
-.simple-calendar {
-  .day {}
+main {
+  color: #65514F;
+}
 
-  .wday-0 {
-    // background-color: red;
+.background {
+  background-image: url('../images/paris.jpg');
+  // background-size: contain;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+  background-color:rgba(255,255,255,0.7);
+  background-blend-mode:lighten;
+  margin:0;
+}
+
+header {
+  background-color: #EDDACB;
+}
+
+body {
+  background-color: #fffff9;
+}
+
+/*body {*/
+/*  background-image: image-url("paris.jpg");}*/
+
+.simple-calendar {
+  width: 100%;
+
+  .hour {
+    padding: 0px;
+    text-align: center;
+    color: #65514F;
+    background-color: #C8B6A6;
   }
+  .circle {
+    background-color: #fffff9;
+    color: #65514F;
+  }
+
+  .cross {
+    background-color: #e6e6e6;
+    color: #65514F;
+  }
+
+  .day {
+    color: #65514F;
+  }
+
+  .wday-0 {}
   .wday-1 {}
   .wday-2 {}
   .wday-3 {}
@@ -24,4 +68,8 @@
   .current-month {}
 
   .has-events {}
+
+  .table {
+    color: #65514F;
+  }
 }

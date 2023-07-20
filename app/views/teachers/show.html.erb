@@ -1,5 +1,8 @@
-<div>
-  <h2>講師詳細 / Détail d'enseignant</h2>
+<div class="container">
+  <div class="row-md-8 offset-2 mt-5 h2">
+    講師詳細 / Détail d'enseignant
+  </div>
+  <div class="row--md-8 offset-2 mt-3">
   <% unless student_signed_in? %>
     <table>
       <tr>
@@ -23,7 +26,7 @@
       </tr>
       <tr>
         <th>得意分野</th>
-        <td><%= @teacher.specialty %></td>
+        <td><%= @teacher.specialty_i18n %></td>
       </tr>
       <tr>
         <th>ステータス</th>
@@ -58,10 +61,11 @@
       <tr>
         <th>メッセージ</th>
         <td><%= @teacher.introduction %></td>
-      </tr>
     </table>
   <% end %>
-  <div>
+  </tr>
+  </div>
+  <div class="row--md-8 offset-2 mt-3">
     <% if @teacher == current_teacher || admin_signed_in? %>
       <%= link_to "編集する", edit_teachers_information_path %>
     <% else %>

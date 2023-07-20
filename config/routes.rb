@@ -2,11 +2,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get '/about', to: 'homes#about'
   resources :schedules do
-    # resources :reservations, only: [:new, :index] # 問題が発生したらこのへん見直して！
     resource :reservation, only: [:new, :show, :edit, :update, :destroy] do
-      # post 'reservations/confirm', to: 'reservations#confirm'
-      # get 'reservations/complete', to: 'reservations#complete'
-      # post 'reservation/complete', to: 'reservations#create'
       collection do
         post 'confirm', to: 'reservations#confirm'
       end
@@ -28,6 +24,7 @@ Rails.application.routes.draw do
     patch 'students/information/:id', to: 'students#update'
     get 'students/confirm', to: 'students#confirm'
     patch 'students/withdraw', to: 'students#withdraw'
+  resources :contacts, only: [:new, :create]
 
   # 管理者用
   # URL /admin/sign_in ...

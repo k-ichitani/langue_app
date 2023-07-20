@@ -1,4 +1,29 @@
-
-<div>
-  <div>予約詳細画面</div>
+<div class="container">
+  <div class="row-md-9 offset-1 mt-5 h2">予約詳細画面</div>
+  <div class="row-md-8 offset-2 mt-4">
+    <table>
+      <tr>
+        <td>受講者氏名：<%= @reservation.student.last_name + @reservation.student.first_name %></td>
+      </tr>
+      <tr>
+        <td>レッスン担当：<%= @reservation.schedule.teacher.first_name + @reservation.schedule.teacher.last_name%></td>
+      </tr>
+      <tr>
+        <td>受講予定日時：<%= @reservation.start_time.strftime("%Y-%m-%d %H:%M") %>〜<%= @reservation.finish_time.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+      <tr>
+        <td>予約確定日時：<%= @reservation.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+      <tr>
+      <td>予約ステータス：<%= @reservation.status_i18n %></td>
+    </tr>
+    </table>
+  </div>
+  <div class="row-md-8 offset-2 mt-4">
+    <% if admin_signed_in? %>
+      <td><%= link_to '編集する', edit_schedule_reservation_path, class: "btn btn-success" %></td>
+    <% elsif student_signed_in? %>
+      <p>キャンセルする場合はメールまたはお電話にてご連絡ください</p>
+    <% end %>
+  </div>
 </div>

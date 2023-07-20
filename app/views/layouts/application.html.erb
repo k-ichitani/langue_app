@@ -13,11 +13,12 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light p-0">
         <div class="container">
-          <a class="navbar-brand p-3" href="/">Langue App</a>
+          <a class="navbar-brand p-3" href="/"><%= image_tag 'logo4.png', alt: '画像', size: '250x120' %></a>
+          <!--<img src="/assets/logo.png" alt="">-->
           <div>
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto" style="flex-direction: row;">
               <% if student_signed_in? %>
                 <li class="nav-item">
                   <%= link_to schedules_path do %>
@@ -30,7 +31,7 @@
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to root_path do %>
+                  <%= link_to new_contact_path(student_id: current_student.id) do %>
                   <!--トップのお問い合わせフォームに位置合わせる！-->
                   <i class="fas fa-question-circle"></i>お問い合わせ
                   <% end %>

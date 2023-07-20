@@ -2,6 +2,7 @@ class ReservationsController < ApplicationController
   def new
     @schedule = Schedule.find(params[:schedule_id])
     @reservation = Reservation.new
+    @day = params[:day]
   end
 
   def confirm
@@ -29,8 +30,15 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 2).order(day: :desc)
-    if @schedules.present?
+    # @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 2).order(day: :desc)
+    @schedules = Schedule.all
+    if @schedules.present? && student_signed_in?
+      @student = current_student
+      @reservations = @student.reservations
+      # @student = @reservations.student_id
+    elsif @schedules.present? && admin_signed_in?
+      @reservations = @schedules.map(&:reservations).flatten
+    elsif @schedules.present? && teacher_signed_in?
       @reservations = @schedules.map(&:reservations).flatten
     else
       flash[:error] = '予約はありません'
@@ -39,6 +47,8 @@ class ReservationsController < ApplicationController
   end
 
   def show
+    @reservation = Reservation.find(params[:id])
+
   end
 
   def edit
