@@ -9,10 +9,10 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @schedule = Schedule.find(params[:schedule_id])
     @student = current_student
-    # if @reservation.invalid?
-    #   #byebug
-    #   render :new
-    # end
+    if @reservation.invalid?
+      #byebug
+      render :new
+    end
   end
 
   def create
@@ -31,7 +31,7 @@ class ReservationsController < ApplicationController
   def index
     # @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 2).order(day: :desc)
     @schedules = Schedule.all
-    
+
     if @schedules.present? && student_signed_in?
       @student = current_student
       @reservations = @student.reservations
@@ -51,6 +51,18 @@ class ReservationsController < ApplicationController
   end
 
   def edit
+    @reservation = Reservation.find(params[:id])
+    @student = @reservation.student
+    @schedule = @reservation.schedule
+  end
+
+  def update
+    @reservation = Reservation.find(params[:schedule_id])
+    if @reservation.save(reservation_params)
+      redirect_to schedule_reservation_path(@schedule)
+    else
+      render :edit
+    end
   end
 
   private

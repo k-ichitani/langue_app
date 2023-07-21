@@ -9,7 +9,7 @@ main {
   // background-size: contain;
   background-size: cover;
   background-repeat:no-repeat;
-  background-position: center center;
+  background-position: right;
   background-color:rgba(255,255,255,0.7);
   background-blend-mode:lighten;
   margin:0;
@@ -17,6 +17,11 @@ main {
 
 header {
   background-color: #EDDACB;
+}
+
+footer {
+  background-color: #EDDACB;
+  color: #65514F;
 }
 
 body {

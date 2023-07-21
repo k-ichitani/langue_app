@@ -1,5 +1,6 @@
 <div class="container mt-5 mb-5">
   <div class="row-md-8 offset-2">
+    <%= render "layouts/errors", obj: @reservation %>
     <h2>新規予約</h2>
     <%= link_to '予約履歴', reservations_path(current_student) %>
     </div>

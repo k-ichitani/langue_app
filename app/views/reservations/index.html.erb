@@ -15,7 +15,7 @@
           </tr>
           <tr>
             <td>受講予定日：<%= reservation.schedule.start_time.strftime("%Y-%m-%d %H:%M") %>〜</td>
-            <td><%= reservation.finish_time.schedule.strftime("%Y-%m-%d %H:%M") %></td>
+            <td><%= reservation.schedule.finish_time.strftime("%Y-%m-%d %H:%M") %></td>
             <td><%= link_to '詳細', schedule_reservation_path(schedule_id: reservation.schedule_id, id: reservation.id) %></td>
           </tr>
         <% end %>

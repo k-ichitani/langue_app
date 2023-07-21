@@ -298,7 +298,7 @@ ja:
         start_time: 勤務開始日時
         finish_time: 勤務終了日時
       reservation:
-        confirmation_sent_at: パスワード確認送信時刻
+        confirmation_sent_at: パ��ワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
         created_at: 作成日
@@ -467,7 +467,7 @@ ja:
       not_found: は見つかりませんでした。
       not_locked: はロックされていません。
       not_saved:
-        one: エラーが発生したため %{resource} は保存されませんでした。
+        one: エラーが発生したため %{resource} は保���されませんでした。
         other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
       record_invalid: 'バリデーションに失敗しました: %{errors}'
       restrict_dependent_destroy:

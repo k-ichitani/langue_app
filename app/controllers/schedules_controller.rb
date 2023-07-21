@@ -40,7 +40,7 @@ class SchedulesController < ApplicationController
     if current_student.present? && params[:teacher_id].present?
       @teacher = Teacher.find(params[:teacher_id])
       @schedules = @teacher.schedules.where("start_time >= ?", Date.current).order(start_time: :asc)
-      @reservations = @schedules.reservation
+      @reservations = Reservation.all
     elsif teacher_signed_in?
       @teacher = current_teacher
       @schedules = @teacher.schedules.order(start_time: :desc)

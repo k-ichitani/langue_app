@@ -1,8 +1,7 @@
 <div class="container mb-5 mt-5">
   <h2>スケジュール / Programme</h2>
-
   <div class="row">
-    <% if teacher_signed_in? || admin_signed_in? %>
+    <% if teacher_signed_in? %>
       <%= link_to '新規スケジュール登録はこちら', new_schedule_path %>
     <% elsif student_signed_in? %>
     <div><%= link_to '予約履歴', reservations_path %></div>

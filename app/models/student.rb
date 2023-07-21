@@ -23,8 +23,8 @@ class Student < ApplicationRecord
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |student|
       student.password = SecureRandom.urlsafe_base64
-      student.last_name = "ゲスト"
-      student.first_name ="ユーザー"
+      student.last_name = "guest"
+      student.first_name ="user"
       student.telephone_number = "0"
     end
   end
