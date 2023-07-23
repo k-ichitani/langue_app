@@ -1,6 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :teacher
-  has_many :reservations
+  has_one :reservation
 
   validates :teacher_id, presence: true
   validates :start_time, presence: true

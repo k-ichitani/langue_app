@@ -10,7 +10,6 @@ class ReservationsController < ApplicationController
     @schedule = Schedule.find(params[:schedule_id])
     @student = current_student
     if @reservation.invalid?
-      #byebug
       render :new
     end
   end
@@ -31,16 +30,16 @@ class ReservationsController < ApplicationController
   def index
     # @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 2).order(day: :desc)
     @schedules = Schedule.all
-
     if @schedules.present? && student_signed_in?
       @student = current_student
       @reservations = @student.reservations
     elsif @schedules.present? && admin_signed_in?
-      @reservations = @schedules.map(&:reservations).flatten
+      @reservations = @schedules.map { |schedule| schedule.reservation }.compact
     elsif @schedules.present? && teacher_signed_in?
-      @reservations = @schedule.teacher.reservations
+      @teacher = current_teacher
+      @reservations = @teacher.schedules.map { |schedule| schedule.reservation }.compact
     else
-      flash[:error] = '予約はありません'
+      flash[:alert] = '予約はありません'
       redirect_to schedules_path
     end
   end

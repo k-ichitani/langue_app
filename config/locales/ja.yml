@@ -353,6 +353,10 @@ ja:
               blank: 'は入力してください'
             teacher_id:
               blank: '講師IDは入力してください'
+        reservation:
+          attributes:
+            schedule_id:
+              taken : 'はすでに予約されています。他の日時を選択してください。'
       messages:
 
   devise:

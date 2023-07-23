@@ -43,9 +43,11 @@ class SchedulesController < ApplicationController
       @reservations = Reservation.all
     elsif teacher_signed_in?
       @teacher = current_teacher
-      @schedules = @teacher.schedules.order(start_time: :desc)
+      @schedules = @teacher.schedules.where("start_time >= ?", Date.current).order(start_time: :asc)
     else
-      @schedules = Schedule.all.order(start_time: :desc)
+      #whereで一週間分の予定を取ってくるようにする(allで全データ取ってくるより負荷少なくなる◎！)
+      @schedules = Schedule.where("start_time >= ?", Date.current).order(start_time: :asc)
+      # binding.pry
     end
   end
 
