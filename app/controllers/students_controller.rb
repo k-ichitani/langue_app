@@ -18,16 +18,21 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
-    @student.update(student_params)
-    redirect_to students_information_path(@student.id)
+    if @student.update(student_params)
+    redirect_to students_information_path(@student.id), notice: "会員情報を更新しました。"
+    else
+      flash[:alert] = "更新に失敗しました。"
+      render :edit
+    end
   end
 
   def confirm
+    puts "params[:email]: #{params[:email]}"
     @student = Student.find_by(email: params[:email])
   end
 
   def withdraw
-    @student = current_student
+    @student = Student.find(params[])
     if @student
       if @student.update(is_deleted: true)
         reset_session

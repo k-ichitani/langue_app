@@ -20,6 +20,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to complete_schedule_reservation_path(@reservation.schedule_id)
     else
+      flash[:alert] = "予約に失敗しました。"
       render 'new'
     end
   end
@@ -37,7 +38,8 @@ class ReservationsController < ApplicationController
       @reservations = @schedules.map { |schedule| schedule.reservation }.compact
     elsif @schedules.present? && teacher_signed_in?
       @teacher = current_teacher
-      @reservations = @teacher.schedules.map { |schedule| schedule.reservation }.compact
+      # @reservations = @teacher.schedules.map { |schedule| schedule.reservation }.compact
+      @reservations = Reservation.where(schedule_id: @teacher.schedules.pluck(:id)).order(:date)
     else
       flash[:alert] = '予約はありません'
       redirect_to schedules_path

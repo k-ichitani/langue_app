@@ -42,24 +42,27 @@ module SchedulesHelper
   # end
 
   def check_schedule(day, time)
-  check_time = Time.zone.parse("#{day} #{time}")
+    check_time = Time.zone.parse("#{day} #{time}")
 
-  @schedules.each do |schedule|
-    if schedule.start_time <= check_time && check_time < schedule.finish_time
-      # スケジュールが見つかった場合の処理
-      if schedule.reservation.present?
-        # 予約が入っている場合はfalseを返す
-        return false
-      else
-        # 予約が入っていない場合はtrueを返す
-        return true
+    @schedules.each do |schedule|
+      # check_time  7/15 19:00 <= ここが○ になるか、×になるかを知りたい
+      # schedule.start_time: 7/15 19:00
+      # schedule.finish_time: 7/15 20:00
+      if schedule.start_time <= check_time && check_time < schedule.finish_time
+        # スケジュールが見つかった場合の処理
+        if schedule.reservation.present?
+          # 予約が入っている場合はfalseを返す
+          return false
+        else
+          # 予約が入っていない場合はtrueを返す
+          return true
+        end
       end
     end
-  end
 
-  # スケジュールが見つからなかった場合はfalseを返す
-  return false
-end
+    # スケジュールが見つからなかった場合はfalseを返す
+    return false
+  end
 
 
   # def teacher_name(day, time)

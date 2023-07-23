@@ -45,7 +45,7 @@ class SchedulesController < ApplicationController
       @teacher = current_teacher
       @schedules = @teacher.schedules.where("start_time >= ?", Date.current).order(start_time: :asc)
     else
-      #whereで一週間分の予定を取ってくるようにする(allで全データ取ってくるより負荷少なくなる◎！)
+      #whereで一週間分の予定を取ってくるようにする 未！
       @schedules = Schedule.where("start_time >= ?", Date.current).order(start_time: :asc)
       # binding.pry
     end

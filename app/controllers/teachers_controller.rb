@@ -15,8 +15,9 @@ class TeachersController < ApplicationController
   def update
     @teacher = Teacher.find(params[:id])
     if @teacher.update(teacher_params)
-      redirect_to teachers_information_path(@teacher.id)
+      redirect_to teachers_information_path(@teacher.id), notice: "講師情報を更新しました。"
     else
+      flash[:alert] = "更新に失敗しました。"
       render 'edit'
     end
   end
