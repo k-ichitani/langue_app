@@ -31,6 +31,36 @@ Teacher.create!(
   is_deleted: false
 )
 
+Teacher.create!(
+  last_name: 'Richard',
+  first_name: 'Emma',
+  email: 'emma@example.com',
+  telephone_number: '00000000003',
+  password: '123456',
+  specialty: 'exam',
+  is_deleted: false
+)
+
+Teacher.create!(
+  last_name: 'Bernard',
+  first_name: 'Léon',
+  email: 'leon@example.com',
+  telephone_number: '00000000004',
+  password: '123456',
+  specialty: 'daily_conversation',
+  is_deleted: false
+)
+
+Teacher.create!(
+  last_name: 'Roux',
+  first_name: 'Simon',
+  email: 'simon@example.com',
+  telephone_number: '00000000005',
+  password: '123456',
+  specialty: 'travel',
+  is_deleted: false
+)
+
 Student.create!(
   last_name: 'Yamda',
   first_name: 'Tarou',

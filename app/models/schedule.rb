@@ -6,13 +6,10 @@ class Schedule < ApplicationRecord
   validates :start_time, presence: true
   validates :finish_time, presence: true
 
-  validate :date_before_start
+  validate :date_current_today
   validate :date_before_finish
-
-  def date_before_start
-    return if start_time.blank?
-    errors.add(:start_time, "は明日以降の日時を選択してください") if start_time < Time.now
-  end
+  validate :date_same_day
+  validate :date_two_month_end
 
   def date_current_today
     errors.add(:start_time, "は当日は選択できません。明日以降の日付を選択してください。") if start_time < (Date.current + 1)
@@ -20,12 +17,16 @@ class Schedule < ApplicationRecord
 
   def date_before_finish
     return if finish_time.blank? || start_time.blank?
-    errors.add(:finish_time, "は開始日時以降の時間を選択してください") if finish_time < start_time
+    errors.add(:finish_time, "は開始日時以降の時間を選択してください") if finish_time <= start_time
   end
 
-  # def date_two_month_end
-  #   errors.add(:start_time,"は2ヶ月以降の日付は選択できません") if (Date.current >> 2) < start_time
-  # end
+  def date_same_day
+    errors.add(:finish_time, "は開始日と同じ日付を選択してください") if finish_time.day != start_time.day
+  end
+
+  def date_two_month_end
+    errors.add(:start_time,"は2ヶ月以降の日付は選択できません") if (Date.current >> 2) < start_time
+  end
 
   def self.schedules_after_three_month
     schedules = Schedule.all.where("start_time >= ?", Date.current).where("start_time < ?", Date.current >> 2).order(start_time: :desc)

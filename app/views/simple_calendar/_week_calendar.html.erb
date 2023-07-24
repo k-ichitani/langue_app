@@ -42,17 +42,21 @@
             <div class="hour text-center">
               <% if check_schedule(day, time) %>
                 <td class="circle text-center">
-                  <!--東京時間に直して呼び出す-->
-                  <% datetime_str = "#{day}T#{time}" %>
-                  <% datetime_in_tokyo = Time.zone.parse(datetime_str) %>
-                  <% schedule = Schedule.find_by("start_time <= ? AND finish_time >= ?", datetime_in_tokyo, datetime_in_tokyo)  %>
-                  <% if schedule.nil? %>
-                    ○
+                  <% if student_signed_in? %>
+                    <!--東京時間に直して呼び出す-->
+                    <% datetime_str = "#{day}T#{time}" %>
+                    <% datetime_in_tokyo = Time.zone.parse(datetime_str) %>
+                    <% schedule = Schedule.find_by("start_time <= ? AND finish_time >= ?", datetime_in_tokyo, datetime_in_tokyo)  %>
+                    <% if schedule.nil? %>
+                      ○
+                    <% else %>
+                    <%# byebug %>
+                    <%= link_to new_schedule_reservation_path(schedule.id) do %>
+                      ○
+                    <% end %>
+                    <% end %>
                   <% else %>
-                  <%# byebug %>
-                  <%= link_to new_schedule_reservation_path(schedule.id) do %>
-                  ○
-                  <% end %>
+                    ○
                   <% end %>
                 </td>
                 <%#= link_to schedule_path(@schedule) do %>

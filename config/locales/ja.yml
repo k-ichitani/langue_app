@@ -197,7 +197,7 @@ ja:
         current_password: 現在のパスワード
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
-        email: Eメール
+        email: 管理者Eメール
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻
@@ -298,7 +298,7 @@ ja:
         start_time: 開始日時
         finish_time: 終了日時
       reservation:
-        confirmation_sent_at: パ��ワード確認送信時刻
+        confirmation_sent_at: パ��ワー��確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
         created_at: 作成日
@@ -388,8 +388,13 @@ ja:
               blank: 'を入力してください'
             content:
               blank: 'を入力してください'
+        admin:
+          attributes:
+            email:
+              taken: 'はすでに登録されています。'
 
       messages:
+        taken: 'はすでに登録済みです'
 
   devise:
     confirmations:
@@ -509,3 +514,4 @@ ja:
       restrict_dependent_destroy:
         has_one: "%{record}が存在しているので削除できません"
         has_many: "%{record}が存在しているので削除できません"
+      taken: "はすでに使用されています"

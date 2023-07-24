@@ -25,22 +25,6 @@ module SchedulesHelper
             "23:00"]
   end
 
-  # def check_schedule(day, time)
-  #   check_time = Time.zone.parse("#{day} #{time}")
-
-  #   @schedules.each do |schedule|
-  #     # check_time  7/15 19:00 <= ここが○ になるか、×になるかを知りたい
-  #     # schedule.start_time: 7/15 19:00
-  #     # schedule.finish_time: 7/15 21:00
-  #     return false if schedule.reservation.present?
-  #     if schedule.start_time <= check_time && check_time < schedule.finish_time
-  #       #binding.pry
-  #       return true
-  #     end
-  #   end
-  #   return false
-  # end
-
   def check_schedule(day, time)
     check_time = Time.zone.parse("#{day} #{time}")
 
