@@ -9,7 +9,7 @@
     <tr>
       <td>
         <%= link_to teachers_information_path do %>
-          <%= @schedule.teacher.first_name + @schedule.teacher.last_name %>
+          <%= @schedule.teacher.first_name %>&nbsp;<%= @schedule.teacher.last_name %>
         <% end %>
       </td>
       <td><%= @schedule.start_time.strftime("%Y-%m-%d %H:%M") %>～<%= @schedule.finish_time.strftime("%Y-%m-%d %H:%M") %></td>

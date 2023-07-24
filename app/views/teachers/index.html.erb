@@ -20,7 +20,7 @@
           <td><%= teacher.id %></td>
           <td><%= link_to teachers_information_path(teacher) do %>
           <%= image_tag teacher.get_image(50, 50) %>
-          <%= teacher.last_name + teacher.first_name %>
+          <%= teacher.last_name %>&nbsp;<%= teacher.first_name %>
           <% end %></td>
           <td><%= teacher.email %></td>
           <td>

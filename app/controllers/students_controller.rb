@@ -27,12 +27,11 @@ class StudentsController < ApplicationController
   end
 
   def confirm
-    puts "params[:email]: #{params[:email]}"
-    @student = Student.find_by(email: params[:email])
+    @student = current_student
   end
 
   def withdraw
-    @student = Student.find(params[])
+    @student = current_student
     if @student
       if @student.update(is_deleted: true)
         reset_session
@@ -40,7 +39,7 @@ class StudentsController < ApplicationController
         redirect_to root_path
       else
         flash[:alert] = "退会処理に失敗しました"
-        redirect_to students_mypage_path(@student)
+        redirect_to students_information_path(@student)
       end
     else
       flash[:alert] = "ユーザーが見つかりません"

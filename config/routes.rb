@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'students/information/:id', to: 'students#show', as: 'students_information'
     get 'students/information/:id/edit', to: 'students#edit', as: 'edit_students_information'
     patch 'students/information/:id', to: 'students#update'
-    get 'students/confirm', to: 'students#confirm'
+    get 'students/confirm', to: 'students#confirm', as: 'confirm_students_information'
     patch 'students/withdraw', to: 'students#withdraw'
   resources :contacts, only: [:new, :create]
 

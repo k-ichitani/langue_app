@@ -8,7 +8,7 @@
       <table>
           <tr>
             <th>講師名</th>
-            <td><%= current_teacher.first_name + current_teacher.last_name %></td>
+            <td><%= current_teacher.first_name %>&nbsp;<%= current_teacher.last_name %></td>
           </tr>
           <tr>
             <th>勤務日時</th>
@@ -21,8 +21,8 @@
           </tr>
       </table>
       <%= f.submit '登録' %>
-    
+
     <% end %>
-  
+
   </div>
 </div>

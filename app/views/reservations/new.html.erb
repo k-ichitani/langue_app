@@ -20,7 +20,7 @@
             <th>予約情報</th>
           </tr>
           <tr>
-            <td>講師:<%= @schedule.teacher.last_name + @schedule.teacher.first_name %></td>
+            <td>講師:<%= @schedule.teacher.last_name %>&nbsp;<%= @schedule.teacher.first_name %></td>
           </tr>
           <tr>
             <td>レッスン日時：<%= @schedule.start_time.strftime("%Y-%m-%d %H:%M") %>〜<%= @schedule.finish_time.strftime("%Y-%m-%d %H:%M") %></td>

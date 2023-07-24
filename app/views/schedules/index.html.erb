@@ -1,5 +1,6 @@
 <div class="container mb-5 mt-5">
   <h2>スケジュール / Programme</h2>
+  <!--<p>※予約は、下記の「講師から選ぶ」を選択しご予約にお進みください。</p>-->
   <div class="row">
     <% if teacher_signed_in? %>
       <%= link_to '新規スケジュール登録はこちら', new_schedule_path %>
@@ -27,7 +28,7 @@
           <th>勤務日時</th>
         </tr>
         <tr>
-          <td><%= schedule.teacher.first_name %><%= schedule.teacher.last_name %></td>
+          <td><%= schedule.teacher.first_name %>&nbsp;<%= schedule.teacher.last_name %></td>
           <td><%= schedule.start_time.strftime("%Y-%m-%d %H:%M") %></td>
           <td>〜</td>
           <td><%= schedule.finish_time.strftime("%Y-%m-%d %H:%M") %></td>

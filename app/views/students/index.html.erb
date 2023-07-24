@@ -17,7 +17,7 @@
           <tr>
             <td><%= student.id %></td>
             <td><%= link_to students_information_path(student.id) do %>
-            <%= student.last_name + student.first_name %>
+            <%= student.last_name %>&nbsp;<%= student.first_name %>
             <% end %></td>
             <td><%= student.email %></td>
             <td>
