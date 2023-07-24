@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
   # before_action :authenticate_admin!
   # before_action :authenticate_teacher!, only: [:show]
   # before_action :authenticate_student!, only: [:show, :edit, :update, :confirm, :withdraw]
+  before_action :ensure_guest_student, only: [:edit]
 
   def index
     @students = Student.all
@@ -17,16 +18,21 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
-    @student.update(student_params)
-    redirect_to students_information_path(@student.id)
+    if @student.update(student_params)
+    redirect_to students_information_path(@student.id), notice: "会員情報を更新しました。"
+    else
+      flash[:alert] = "更新に失敗しました。"
+      render :edit
+    end
   end
 
   def confirm
+    puts "params[:email]: #{params[:email]}"
     @student = Student.find_by(email: params[:email])
   end
 
   def withdraw
-    @student = current_student
+    @student = Student.find(params[])
     if @student
       if @student.update(is_deleted: true)
         reset_session
@@ -47,4 +53,12 @@ class StudentsController < ApplicationController
   def student_params
     params.require(:student).permit(:last_name, :first_name, :email, :telephone_number, :is_deleted)
   end
+
+  def ensure_guest_student
+    @student = Student.find(params[:id])
+    if @student.email == "guest@example.com"
+      redirect_to students_information_path(current_student), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
+  end
+
 end

@@ -41,7 +41,7 @@
     </table>
   </div>
   <div class="row-md-7 offset-3 mt-3">
-    <% if student_signed_in? && @student.id == current_student.id %>
+    <% if @student.email != "guest@example.com" && @student.id == current_student.id %>
       <%= link_to "編集する", edit_students_information_path, class: "btn btn-primary" %>
       <%= link_to "退会する", students_confirm_path, class: "btn btn-danger" %><br>
     <% elsif admin_signed_in? %>

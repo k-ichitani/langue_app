@@ -9,7 +9,6 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @schedule = Schedule.find(params[:schedule_id])
     @student = current_student
-
     if @reservation.invalid?
       render :new
     end
@@ -18,10 +17,10 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     @student = current_student
-
     if @reservation.save
       redirect_to complete_schedule_reservation_path(@reservation.schedule_id)
     else
+      flash[:alert] = "予約に失敗しました。"
       render 'new'
     end
   end
@@ -35,13 +34,14 @@ class ReservationsController < ApplicationController
     if @schedules.present? && student_signed_in?
       @student = current_student
       @reservations = @student.reservations
-      # @student = @reservations.student_id
     elsif @schedules.present? && admin_signed_in?
-      @reservations = @schedules.map(&:reservations).flatten
+      @reservations = @schedules.map { |schedule| schedule.reservation }.compact
     elsif @schedules.present? && teacher_signed_in?
-      @reservations = @schedules.map(&:reservations).flatten
+      @teacher = current_teacher
+      # @reservations = @teacher.schedules.map { |schedule| schedule.reservation }.compact
+      @reservations = Reservation.where(schedule_id: @teacher.schedules.pluck(:id)).order(:date)
     else
-      flash[:error] = '予約はありません'
+      flash[:alert] = '予約はありません'
       redirect_to schedules_path
     end
   end
@@ -52,12 +52,23 @@ class ReservationsController < ApplicationController
   end
 
   def edit
+    @reservation = Reservation.find(params[:id])
+    @student = @reservation.student
+    @schedule = @reservation.schedule
+  end
+
+  def update
+    @reservation = Reservation.find(params[:schedule_id])
+    if @reservation.save(reservation_params)
+      redirect_to schedule_reservation_path(@schedule)
+    else
+      render :edit
+    end
   end
 
   private
   def reservation_params
     # byebug
-    # params.require(:reservation).permit(:student_id, :schedule_id, :start_time, :finish_time, :status)
-    params.require(:reservation).permit(:student_id, :start_time, :finish_time, :schedule_id)
+    params.require(:reservation).permit(:student_id, :schedule_id, :status)
   end
 end

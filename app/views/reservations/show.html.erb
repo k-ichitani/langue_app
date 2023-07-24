@@ -3,13 +3,13 @@
   <div class="row-md-8 offset-2 mt-4">
     <table>
       <tr>
-        <td>受講者氏名：<%= @reservation.student.last_name + @reservation.student.first_name %></td>
+        <td>受講者氏名：<%= @reservation.student.last_name %>&nbsp;<%= @reservation.student.first_name %></td>
       </tr>
       <tr>
-        <td>レッスン担当：<%= @reservation.schedule.teacher.first_name + @reservation.schedule.teacher.last_name%></td>
+        <td>レッスン担当：<%= @reservation.schedule.teacher.first_name %>&nbsp;<%= @reservation.schedule.teacher.last_name%></td>
       </tr>
       <tr>
-        <td>受講予定日時：<%= @reservation.start_time.strftime("%Y-%m-%d %H:%M") %>〜<%= @reservation.finish_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td>受講予定日時：<%= @reservation.schedule.start_time.strftime("%Y-%m-%d %H:%M") %>〜<%= @reservation.schedule.finish_time.strftime("%Y-%m-%d %H:%M") %></td>
       </tr>
       <tr>
         <td>予約確定日時：<%= @reservation.created_at.strftime("%Y-%m-%d %H:%M") %></td>

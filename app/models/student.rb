@@ -6,8 +6,8 @@ class Student < ApplicationRecord
 
   has_many :reservations
 
-  validates :last_name, presence: true
-  validates :first_name, presence: true
+  validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "は半角英字で入力してください" }
+  validates :first_name, presence: true, format: { with: /^[a-zA-Z]+$/, message: "は半角英字で入力してください" ,:multiline => true }
   validates :email, presence: true
   validates :telephone_number, presence: true
   validates :encrypted_password, presence: true
@@ -23,8 +23,8 @@ class Student < ApplicationRecord
   def self.guest
     find_or_create_by!(email: GUEST_USER_EMAIL) do |student|
       student.password = SecureRandom.urlsafe_base64
-      student.last_name = "ゲスト"
-      student.first_name ="ユーザー"
+      student.last_name = "guest"
+      student.first_name ="user"
       student.telephone_number = "0"
     end
   end

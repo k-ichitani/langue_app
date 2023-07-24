@@ -5,8 +5,9 @@
     <p>ゲストユーザーはユーザー情報の編集ができません。</p>
   <% end %>
   </div>
-
+  
   <div class="row-md-8 offset-2 mt-4">
+    <%= render "layouts/errors", obj: @student %>
     <%= form_with model: @student, url: students_information_path, method: :patch do |f| %>
     <table>
       <tr>

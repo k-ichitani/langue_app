@@ -1,27 +1,28 @@
 <div class="container mb-5">
-<h1>スケジュール登録</h1>
-<div classs="row">
-
-<%= form_with model: @schedule, url: schedules_path do |f| %>
-  <!--f.hidden_fieldで講師idを送信-->
-  <%= f.hidden_field :teacher_id, value: current_teacher.id %>
-  <table>
-      <tr>
-        <th>講師名</th>
-        <td><%= current_teacher.first_name + current_teacher.last_name %></td>
-      </tr>
-      <tr>
-        <th>勤務日時</th>
-      </tr>
-      <tr>
-      <td>
-        <%= f.datetime_select :start_time, :minute_step => 30 %>～
-        <%= f.datetime_select :finish_time, :minute_step => 30 %></td>
-      </tr>
-  </table>
-  <%= f.submit '登録' %>
-
-<% end %>
-
-</div>
+  <h1>スケジュール登録</h1>
+  <div classs="row">
+    <%= render "layouts/errors", obj: @schedule %>
+    <%= form_with model: @schedule, url: schedules_path do |f| %>
+      <!--f.hidden_fieldで講師idを送信-->
+      <%= f.hidden_field :teacher_id, value: current_teacher.id %>
+      <table>
+          <tr>
+            <th>講師名</th>
+            <td><%= current_teacher.first_name + current_teacher.last_name %></td>
+          </tr>
+          <tr>
+            <th>勤務日時</th>
+          </tr>
+          <tr>
+            <td>
+              <%= f.datetime_select :start_time, :minute_step => 30 %>～
+              <%= f.datetime_select :finish_time, :minute_step => 30 %>
+            </td>
+          </tr>
+      </table>
+      <%= f.submit '登録' %>
+    
+    <% end %>
+  
+  </div>
 </div>

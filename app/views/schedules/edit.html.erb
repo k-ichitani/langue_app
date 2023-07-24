@@ -1,4 +1,5 @@
 <div class="container mb-5">
+  <%= render "layouts/errors", obj: @schedule %>
   <div class="row-md-9 offset-1 mt-5 h2">スケジュール変更</div>
   <div class="row-md-8 offset-2 mt-4">
     <%= form_with model: @schedule, url: schedule_path(@schedule), method: :patch do |f| %>

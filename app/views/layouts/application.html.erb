@@ -16,8 +16,7 @@
       <nav class="navbar navbar-expand-lg navbar-light p-0">
         <div class="container">
           <a class="navbar-brand p-3" href="/"><%= image_tag 'logo4.png', alt: '画像', size: '250x120' %></a>
-          <!--<img src="/assets/logo.png" alt="">-->
-          <div>
+          <div class="collapse navbar-collapse justify-content-around">
             <ul class="navbar-nav ml-auto" style="flex-direction: row;">
               <% if student_signed_in? %>
                 <li class="nav-item">
@@ -120,8 +119,12 @@
       </nav>
     </header>
     <main class="mb-auto">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     <%= yield %>
     </main>
-    <footer></footer>
+    <footer>
+      <p class="text-center">Langue App</p>
+    </footer>
   </body>
 </html>
