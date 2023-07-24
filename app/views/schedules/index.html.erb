@@ -17,6 +17,7 @@
   </div>
   </div>
 
+<% if admin_signed_in? %>
   <div class="row">
   <% @schedules.each do |schedule| %>
     <div class="col-md-7 offset-3">
@@ -40,4 +41,5 @@
       </table>
     </div>
   <% end %>
-</div>
+  </div>
+<% end %>

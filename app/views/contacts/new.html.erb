@@ -4,14 +4,7 @@
       お問い合わせフォーム
     </div>
     <div>
-      <% if @contact.errors.any? %>
-      <div>
-        <ul><%= @contact.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
+      <%= render "layouts/errors", obj: @contact %>
       <div class="row-md-8 offset-2 contact-form">
         <div>
           <label class="col">お名前</label>
@@ -26,7 +19,7 @@
           </div>
         </div>
         <div class="row-md-8 offset-2 send-btn-contents">
-          <%= f.button type: "submit", class: "register-red-btn", style:'border-style: none;' do %>
+          <%= f.button type: "submit", class: "register-red-btn btn_lg", style:'border-style: none;' do %>
           送信
           <!--<i class="fa-solid fa-paper-plane"></i>-->
           <% end %>
