@@ -10,6 +10,7 @@ class Schedule < ApplicationRecord
   validate :date_before_finish
   validate :date_same_day
   validate :date_two_month_end
+  validate :time_one_hour_only
 
   def date_current_today
     errors.add(:start_time, "は当日は選択できません。明日以降の日付を選択してください。") if start_time < (Date.current + 1)
@@ -26,6 +27,10 @@ class Schedule < ApplicationRecord
 
   def date_two_month_end
     errors.add(:start_time,"は2ヶ月以降の日付は選択できません") if (Date.current >> 2) < start_time
+  end
+
+  def time_one_hour_only
+    errors.add(:finish_time, "は1時間で選択してください") if finish_time > (start_time + 1.hours)
   end
 
   def self.schedules_after_three_month
