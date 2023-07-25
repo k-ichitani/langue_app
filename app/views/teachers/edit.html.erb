@@ -25,7 +25,7 @@
       </div>
       <div>
         <%= f.label :得意分野 %>
-        <%= f.select :specialty, Teacher.specialties.keys, {} %>
+        <%= f.select :specialty, Teacher.specialties.keys.map {|k| [I18n.t("enums.teacher.specialty.#{k}"), k]} %>
       </div>
       <div>
         <th>ステータス</th>
@@ -40,10 +40,10 @@
       </div>
       <div>
         <th>メッセージ</th>
-        <%= f.text_area :introduction %>
+        <%= f.text_area :introduction, size: "40x5" %>
       </div>
-      <%= f.submit '変更を保存' %>
-      <%= link_to '戻る', :back %>
+      <%= f.submit '変更を保存', class: "btn btn-success" %>
+      <%= link_to '戻る', :back, class: "btn btn-secondary" %>
     <% end %>
   </div>
 </div>

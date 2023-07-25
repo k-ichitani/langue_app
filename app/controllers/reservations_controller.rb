@@ -52,7 +52,7 @@ class ReservationsController < ApplicationController
   end
 
   def edit
-    @reservation = Reservation.find(params[:id])
+    @reservation = Reservation.find(params[:schedule_id])
     @student = @reservation.student
     @schedule = @reservation.schedule
   end

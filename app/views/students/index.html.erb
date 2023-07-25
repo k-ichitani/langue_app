@@ -6,21 +6,21 @@
       <table>
         <thead>
           <tr>
-            <th>会員ID</th>
-            <th>氏名</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
+            <th class="text-center", style="width: 10%">会員ID</th>
+            <th class="text-center", style="width: 20%">氏名</th>
+            <th class="text-center", style="width: 30%">メールアドレス</th>
+            <th class="text-center", style="width: 10%">ステータス</th>
           </tr>
         </thead>
         <% @students.each do |student| %>
         <tbody>
           <tr>
-            <td><%= student.id %></td>
-            <td><%= link_to students_information_path(student.id) do %>
+            <td class="text-center"><%= student.id %></td>
+            <td class="text-center"><%= link_to students_information_path(student.id) do %>
             <%= student.last_name %>&nbsp;<%= student.first_name %>
             <% end %></td>
-            <td><%= student.email %></td>
-            <td>
+            <td class="text-center"><%= student.email %></td>
+            <td class="text-center">
               <% if student.is_deleted %>
                 退会
               <% else %>
@@ -31,5 +31,6 @@
         </tbody>
         <% end %>
       </table>
+      <%= paginate @students %>
   </div>
 </div>

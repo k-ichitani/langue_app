@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   before_action :ensure_guest_student, only: [:edit]
 
   def index
-    @students = Student.all
+    @students = Student.page(params[:page])
   end
 
   def show

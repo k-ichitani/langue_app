@@ -1,6 +1,10 @@
 class TeachersController < ApplicationController
   def index
-    @teachers = Teacher.page(params[:page])
+    if student_signed_in?
+      @teachers = Teacher.where(is_deleted: 'false').page(params[:page])
+    else
+      @teachers = Teacher.page(params[:page])
+    end
   end
 
   def show

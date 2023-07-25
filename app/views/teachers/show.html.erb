@@ -67,10 +67,10 @@
   </div>
   <div class="row--md-8 offset-2 mt-3">
     <% if @teacher == current_teacher || admin_signed_in? %>
-      <%= link_to "編集する", edit_teachers_information_path %>
+      <%= link_to "編集する", edit_teachers_information_path, class: "btn btn-success" %>
     <% else %>
-      <%= link_to "この講師のレッスンを予約する", schedules_path(teacher_id: @teacher) %>
+      <%= link_to "この講師のレッスンを予約する", schedules_path(teacher_id: @teacher), class: "btn btn-primary" %>
     <% end %>
-    <%= link_to '戻る', :back %>
+    <%= link_to '戻る', :back, class: "btn btn-secondary" %>
   </div>
 </div>

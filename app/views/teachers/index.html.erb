@@ -7,30 +7,38 @@
     <table>
       <thead>
         <tr>
-          <th class="text-nowrap", style="width: 10%">講師ID</th>
-          <th class="text-nowrap", style="width: 25%">氏名</th>
-          <th class="text-nowrap", style="width: 25%">メールアドレス</th>
-          <th class="text-nowrap", style="width: 15%">ステータス</th>
-          <th class="text-nowrap",style="width: 25%">メッセージ</th>
+          <th class="text-nowrap text-center", style="width: 10%">講師ID</th>
+          <th class="text-nowrap text-center", style="width: 25%">氏名</th>
+          <th class="text-nowrap text-center", style="width: 25%">メールアドレス</th>
+          <th class="text-nowrap text-center", style="width: 15%">ステータス</th>
+          <th class="text-nowrap text-left",style="width: 25%">メッセージ</th>
         </tr>
       </thead>
       <% @teachers.each do |teacher| %>
       <tbody>
         <tr>
-          <td><%= teacher.id %></td>
-          <td><%= link_to teachers_information_path(teacher) do %>
-          <%= image_tag teacher.get_image(50, 50) %>
-          <%= teacher.last_name %>&nbsp;<%= teacher.first_name %>
-          <% end %></td>
-          <td><%= teacher.email %></td>
-          <td>
+          <td class="text-center">
+            <%= teacher.id %>
+          </td>
+          <td class="text-center">
+            <%= link_to teachers_information_path(teacher) do %>
+              <%= image_tag teacher.get_image(50, 50) %>
+              <%= teacher.last_name %>&nbsp;<%= teacher.first_name %>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <%= teacher.email %>
+          </td>
+          <td class="text-center">
             <% if teacher.is_deleted %>
               退会
             <% else %>
               有効
             <% end %>
           </td>
-          <td><div class="text-wrap text-truncate w-50 m-0"><%= teacher.introduction %></div></td>
+          <td>
+            <div class="text-wrap text-truncate w-50 m-0"><%= teacher.introduction %></div>
+          </td>
         </tr>
       </tbody>
       <% end %>
@@ -48,7 +56,7 @@
           <tr>
             <td><%= link_to teachers_information_path(teacher) do %>
             <%= image_tag teacher.get_image(50, 50) %>
-            <%= teacher.last_name + teacher.first_name %>
+            <%= teacher.last_name %>&nbsp;<%= teacher.first_name %>
             <% end %></td>
             <td><div class="text-wrap text-truncate w-50 m-0"><%= teacher.introduction %></div></td>
           </tr>

@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  before_action :authenticate_student!
+
   def new
     @contact = Contact.new
   end
