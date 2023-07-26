@@ -16,7 +16,7 @@ class Public::SessionsController < Devise::SessionsController
     @student = Student.find_by(email: params[:student][:email])
     return if !@student
     if @student.valid_password?(params[:student][:password]) && (@student.is_deleted == true)
-      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
+      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
       redirect_to new_student_session_path
     elsif
       flash[:notice] = "項目を入力してください"

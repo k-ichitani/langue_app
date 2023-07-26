@@ -5,9 +5,9 @@
     <% if teacher_signed_in? %>
       <%= link_to '新規スケジュール登録はこちら', new_schedule_path %>
     <% elsif student_signed_in? %>
-    <div><%= link_to '予約履歴', reservations_path %></div>
+    <div><%= link_to '予約履歴', reservations_path, class: "btn btn-light" %></div>
     <div class="w-100"></div>
-    <div><%= link_to "講師から選ぶ", teachers_path %></div>
+    <div><%= link_to "講師から選ぶ", teachers_path, class: "btn btn-info" %></div>
     <% end %>
   </div>
   <div class="row">

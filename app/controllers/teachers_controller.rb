@@ -1,4 +1,8 @@
 class TeachersController < ApplicationController
+  before_action :authenticate_student!, only: [:index, :show], unless: :student_signed_in?
+  # before_action :authenticate_teacher!, except: [:index], unless: :teacher_signed_in?
+  # before_action :authenticate_admin!
+
   def index
     if student_signed_in?
       @teachers = Teacher.where(is_deleted: 'false').page(params[:page])

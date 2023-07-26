@@ -15,8 +15,8 @@
         </div>
         <div>
           <%= f.label :受講予定日時 %>
-          <%#= f.datetime_select :start_time, :minute_step => 30 %>～
-          <%#= f.datetime_select :finish_time, :minute_step => 30 %>
+          <%= @reservation.schedule.start_time.strftime("%Y-%m-%d %H:%M") %>～
+          <%= @reservation.schedule.finish_time.strftime("%Y-%m-%d %H:%M") %>
         </div>
         <div>
           <%= f.label :予約確定日時 %>

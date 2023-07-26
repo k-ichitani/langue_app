@@ -4,7 +4,7 @@
   <div class="row-md-8 offset-2 mt-4">
     <%= form_with model: @schedule, url: schedule_path(@schedule), method: :patch do |f| %>
       <!--f.hidden_fieldで講師idを送信-->
-      <%= f.hidden_field :teacher_id, value: current_teacher.id %>
+      <%= f.hidden_field :teacher_id, value: @schedule.teacher.id %>
       <table>
           <tr>
             <th>講師名</th>

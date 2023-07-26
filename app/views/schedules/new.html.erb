@@ -7,20 +7,21 @@
       <%= f.hidden_field :teacher_id, value: current_teacher.id %>
       <table>
           <tr>
-            <th>講師名</th>
+            <th class="w-20">講師名</th>
             <td><%= current_teacher.first_name %>&nbsp;<%= current_teacher.last_name %></td>
           </tr>
           <tr>
             <th>勤務日時</th>
-          </tr>
-          <tr>
             <td>
               <%= f.datetime_select :start_time, :minute_step => 30 %>～
               <%= f.datetime_select :finish_time, :minute_step => 30 %>
             </td>
           </tr>
+          <tr>
+
+          </tr>
       </table>
-      <%= f.submit '登録' %>
+      <%= f.submit '登録', class: "btn btn-success" %>
 
     <% end %>
 

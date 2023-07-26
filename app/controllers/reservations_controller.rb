@@ -59,7 +59,7 @@ class ReservationsController < ApplicationController
 
   def update
     @reservation = Reservation.find(params[:schedule_id])
-    if @reservation.save(reservation_params)
+    if @reservation.update(reservation_params)
       redirect_to schedule_reservation_path(@schedule)
     else
       render :edit

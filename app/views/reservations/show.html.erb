@@ -21,7 +21,7 @@
   </div>
   <div class="row-md-8 offset-2 mt-4">
     <% if admin_signed_in? %>
-      <td><%= link_to '編集する', edit_schedule_reservation_path, class: "btn btn-success" %></td>
+      <td><%#= link_to '編集する', edit_schedule_reservation_path, class: "btn btn-success" %></td>
     <% elsif student_signed_in? %>
       <p>キャンセルする場合はメールまたはお電話にてご連絡ください</p>
     <% end %>

@@ -16,7 +16,7 @@
     </tr>
   </table>
   <div>
-    <% if @schedule.teacher == current_teacher %>
+    <% if @schedule.teacher == current_teacher || admin_signed_in? %>
     <%= link_to '変更する', edit_schedule_path, class: "btn btn-success" %>
     <%= link_to '削除する', schedule_path(@schedule), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
     <% end %>

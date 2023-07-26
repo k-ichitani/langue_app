@@ -2,48 +2,54 @@
   <div class="row-md-8 offset-2 mt-5 h2">講師情報編集 / Modifier d'information</div>
   <div class="row--md-8 offset-2 mt-3">
     <%= form_with model: @teacher, url: teachers_information_path, method: :patch do |f| %>
-      <div>
-        <%= f.label :プロフィール画像 %>
-        <%= f.file_field :image, accept: "image/*" %>
-      </div>
-      <div>
-        <%= f.label :講師ID %>
-        <%= @teacher.id %>
-      </div>
-      <div>
-        <%= f.label :講師名 %>
-        <%= f.text_field :first_name %>
-        <%= f.text_field :last_name %>
-      </div>
-      <div>
-        <%= f.label :メールアドレス %>
-        <%= f.text_field :email %>
-      </div>
-      <div>
-        <%= f.label :電話番号 %>
-        <%= f.text_field :telephone_number %>
-      </div>
-      <div>
-        <%= f.label :得意分野 %>
-        <%= f.select :specialty, Teacher.specialties.keys.map {|k| [I18n.t("enums.teacher.specialty.#{k}"), k]} %>
-      </div>
-      <div>
-        <th>ステータス</th>
-        <% if admin_signed_in? %>
-          <%= f.radio_button :is_deleted, "false" %>
-          <%= f.label :is_deleted_false, "有効" %>
-          <%= f.radio_button :is_deleted, "true" %>
-          <%= f.label :is_deleted_true, "退会" %>
-        <% else %>
-          <%= @teacher.is_deleted ? '退会' : '有効' %>
-        <% end %>
-      </div>
-      <div>
-        <th>メッセージ</th>
-        <%= f.text_area :introduction, size: "40x5" %>
-      </div>
+      <table>
+        <tr>
+          <th style="width: 30%"><%= f.label :プロフィール画像 %></th>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%"><%= f.label :講師ID %></th>
+          <td><%= @teacher.id %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%"><%= f.label :講師名 %></th>
+          <td><%= f.text_field :first_name %>
+          <%= f.text_field :last_name %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%"><%= f.label :メールアドレス %></th>
+          <td><%= f.text_field :email %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%"><%= f.label :電話番号 %></th>
+          <td><%= f.text_field :telephone_number %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%"><%= f.label :得意分野 %></th>
+          <td><%= f.select :specialty, Teacher.specialties.keys.map {|k| [I18n.t("enums.teacher.specialty.#{k}"), k]} %></td>
+        </tr>
+        <tr>
+          <th style="width: 30%">ステータス</th>
+          <td>
+            <% if admin_signed_in? %>
+              <%= f.radio_button :is_deleted, "false" %>
+              <%= f.label :is_deleted_false, "有効" %>
+              <%= f.radio_button :is_deleted, "true" %>
+              <%= f.label :is_deleted_true, "退会" %>
+            <% else %>
+              <%= @teacher.is_deleted ? '退会' : '有効' %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th style="width: 30%">メッセージ</th>
+          <td><%= f.text_area :introduction, size: "40x5" %></td>
+        </tr>
+      </table>
+      <div class="row-md-7 offset-3 mt-3">
       <%= f.submit '変更を保存', class: "btn btn-success" %>
       <%= link_to '戻る', :back, class: "btn btn-secondary" %>
+      </div>
     <% end %>
   </div>
 </div>
