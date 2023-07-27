@@ -1,0 +1,10 @@
+<div>
+  <h2>本当に退会しますか？</h2>
+  <div>
+    <p>退会する場合は、「退会する」をクリックしてください。</p>
+  </div>
+  <div>
+    <%= link_to '退会しない', students_information_path(@student), class: "btn btn-primary" %>
+    <%= link_to '退会する', students_withdraw_path(@student), method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-danger" %>
+  </div>
+</div>

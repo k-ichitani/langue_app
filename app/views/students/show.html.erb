@@ -1,0 +1,55 @@
+<div class="container mb-5">
+  <div class="row-md-8 offset-2 mt-5 h2">
+    会員詳細 / Détail d'apprenant
+  </div>
+  <div class="row-md-8 offset-2 mt-4">
+    <table>
+      <tbody>
+        <tr>
+          <th style="width: 60%", class="text-center">会員ID</th>
+          <td><%= @student.id %></td>
+        </tr>
+        <tr>
+          <th style="width: 60%", class="text-center">姓</th>
+          <td><%= @student.last_name %></td>
+        </tr>
+        <tr>
+          <th style="width: 60%", class="text-center">名</th>
+          <td><%= @student.first_name %></td>
+        </tr>
+        <tr>
+          <th style="width: 60%", class="text-center">メールアドレス</th>
+          <td><%= @student.email %></td>
+        </tr>
+        <tr>
+          <th style="width: 60%", class="text-center">電話番号</th>
+          <td><%= @student.telephone_number %></td>
+        </tr>
+        <% if admin_signed_in? || teacher_signed_in? %>
+        <tr>
+          <th style="width: 60%", class="text-center">会員ステータス</th>
+          <td>
+            <% if @student.is_deleted %>
+              退会
+            <% else %>
+              有効
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row-md-7 offset-3 mt-3">
+    <% if @student.email != "guest@example.com" %>
+      <%= link_to "編集する", edit_students_information_path, class: "btn btn-primary" %>
+      <%= link_to "退会する", confirm_students_information_path, class: "btn btn-danger" %><br>
+    <% elsif admin_signed_in? %>
+      <%= link_to "編集する", edit_students_information_path, class: "btn btn-primary" %>
+    <% else %>
+    <% end %>
+  </div>
+  <div class="row-md-7 offset-3 mt-3">
+    <%= link_to '戻る', :back %>
+  </div>
+</div>

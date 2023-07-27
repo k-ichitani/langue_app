@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="row-md-8 offset-2 mt-5 h2">
+    講師一覧 / Enseigants
+  </div>
+  <div class="row-md-8 offset-2 mt-4">
+    <% if admin_signed_in? %>
+    <table>
+      <thead>
+        <tr>
+          <th class="text-nowrap text-center", style="width: 10%">講師ID</th>
+          <th class="text-nowrap text-center", style="width: 25%">氏名</th>
+          <th class="text-nowrap text-center", style="width: 25%">メールアドレス</th>
+          <th class="text-nowrap text-center", style="width: 15%">ステータス</th>
+          <th class="text-nowrap text-left",style="width: 25%">メッセージ</th>
+        </tr>
+      </thead>
+      <% @teachers.each do |teacher| %>
+      <tbody>
+        <tr>
+          <td class="text-center">
+            <%= teacher.id %>
+          </td>
+          <td class="text-center">
+            <%= link_to teachers_information_path(teacher) do %>
+              <%= image_tag teacher.get_image(50, 50) %>
+              <%= teacher.last_name %>&nbsp;<%= teacher.first_name %>
+            <% end %>
+          </td>
+          <td class="text-center">
+            <%= teacher.email %>
+          </td>
+          <td class="text-center">
+            <% if teacher.is_deleted %>
+              退会
+            <% else %>
+              有効
+            <% end %>
+          </td>
+          <td>
+            <div class="text-wrap text-truncate w-50 m-0"><%= teacher.introduction %></div>
+          </td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th class="text-nowrap">氏名</th>
+            <th class="text-nowrap">メッセージ</th>
+          </tr>
+        </thead>
+        <% @teachers.each do |teacher| %>
+        <tbody>
+          <tr>
+            <td><%= link_to teachers_information_path(teacher) do %>
+            <%= image_tag teacher.get_image(50, 50) %>
+            <%= teacher.last_name %>&nbsp;<%= teacher.first_name %>
+            <% end %></td>
+            <td><div class="text-wrap text-truncate w-50 m-0"><%= teacher.introduction %></div></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    <% end %>
+    <%= paginate @teachers %>
+  </div>
+</div>

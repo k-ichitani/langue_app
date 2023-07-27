@@ -1,0 +1,34 @@
+<div class="container mt-5 mb-5">
+  <div class="row-md-8 offset-2">
+    <%= render "layouts/errors", obj: @reservation %>
+    <h2>新規予約</h2>
+    <%= link_to '予約履歴', reservations_path(current_student) %>
+    </div>
+    <div class="row-md-8 offset-2 mt-3">
+    <%= form_with model: @reservation, url: confirm_schedule_reservation_path do |f| %>
+      <!--f.hidden_fieldで生徒idを送信-->
+      <%= f.hidden_field :student_id, value: current_student.id %>
+      <%= f.hidden_field :schedule_id, value: @schedule.id %>
+      <table>
+          <tr>
+            <th>予約者氏名</th>
+          </tr>
+          <tr>
+            <td class="text-left"><%= current_student.first_name + current_student.last_name %></td>
+          </tr>
+          <tr>
+            <th>予約情報</th>
+          </tr>
+          <tr>
+            <td>講師:<%= @schedule.teacher.last_name %>&nbsp;<%= @schedule.teacher.first_name %></td>
+          </tr>
+          <tr>
+            <td>レッスン日時：<%= @schedule.start_time.strftime("%Y-%m-%d %H:%M") %>〜<%= @schedule.finish_time.strftime("%Y-%m-%d %H:%M") %></td>
+          </tr>
+      </table>
+      <div class="pt-4 pb-2">上記の内容で予約しますか？</div>
+      <%= f.submit '確認画面へ進む', class: "btn btn-primary" %>
+    <% end %>
+    </div>
+  </div>
+</div>

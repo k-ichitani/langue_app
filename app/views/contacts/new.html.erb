@@ -1,0 +1,33 @@
+<div class="container background pt-5">
+  <%= form_with(model: @contact, local: true) do |f| %>
+    <div class="row-md-8 offset-2 h2">
+      お問い合わせフォーム
+    </div>
+    <div>
+      <%= render "layouts/errors", obj: @contact %>
+      <div class="row-md-8 offset-2 contact-form">
+        <div>
+          <label class="col">お名前</label>
+          <div class="col">
+            <%= f.text_field :name, placeholder: "お名前", class: "input-form", size: 40 %>
+          </div>
+        </div>
+        <div>
+          <label class="col">お問い合わせ内容</label>
+          <div class="col">
+            <%= f.text_area :content, placeholder: "お問い合わせ内容を入力してください", class: "input-form", size: "40x20" %>
+          </div>
+        </div>
+        <div class="row-md-8 offset-2 send-btn-contents">
+          <%= f.button type: "submit", class: "register-red-btn btn_lg", style:'border-style: none;' do %>
+          送信
+          <!--<i class="fa-solid fa-paper-plane"></i>-->
+          <% end %>
+        </div>
+        <div class="row-md-8 offset-2 register-btn">
+          <%= link_to "戻る", root_path, class: "register-red-btn" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

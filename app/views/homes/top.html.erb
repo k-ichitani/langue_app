@@ -1,0 +1,34 @@
+<div class="container background pt-5">
+  <div class="row pt-2">
+    <div class="col-md-7 offset-3">
+    <h5 class="font-weight-bold">Langue_appについて</h5>
+      <%= link_to "詳しくはこちら", about_path %>
+    </div>
+  </div>
+
+  <div class ="row mt-3">
+    <div class="col-md-7 offset-3">
+    <h5 class="font-weight-bold">レッスンについて</h5>
+    <p>1レッスン= 60分です。<br>
+    個人の予定に合わせてレッスンを受講いただくことが可能です。<br>
+    予約希望時間に予約可能かどうかはカレンダーよりご確認ください。</p>
+    </div>
+  </div>
+  <div class ="row mt-3">
+    <div class="col-md-7 offset-3">
+    <h5 class="font-weight-bold">予約について</h5>
+    <p>
+      <%= link_to 'こちら', schedules_path %>のページから予約いただけます。<br>
+      ご希望の日時・講師を選択しご予約ください。
+      <!--ご希望の講師を選択し、カレンダーで予約可能日時を確認後、ご予約ください。<br>-->
+      <!--予約は24時間前まで可能です。<br>-->
+    </p>
+  </div>
+  </div>
+  <div class ="row mt-3 pb-5">
+    <div class="col-md-7 offset-3">
+    <h5 class="font-weight-bold">お問い合わせ</h5>
+    <p><%= link_to 'こちら', new_contact_path %>よりお問い合わせください。</p>
+  </div>
+  </div>
+</div>

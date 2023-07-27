@@ -1,0 +1,26 @@
+<div class="container mb-5">
+  <div class="row h2 mt-5">スケジュール詳細</div>
+  <div class-"row">
+  <table>
+    <tr>
+      <th>講師名</th>
+      <th>勤務日時</th>
+    </tr>
+    <tr>
+      <td>
+        <%= link_to teachers_information_path(@teacher) do %>
+          <%= @schedule.teacher.first_name %>&nbsp;<%= @schedule.teacher.last_name %>
+        <% end %>
+      </td>
+      <td><%= @schedule.start_time.strftime("%Y-%m-%d %H:%M") %>～<%= @schedule.finish_time.strftime("%Y-%m-%d %H:%M") %></td>
+    </tr>
+  </table>
+  <div>
+    <% if @schedule.teacher == current_teacher || admin_signed_in? %>
+    <%= link_to '変更する', edit_schedule_path, class: "btn btn-success" %>
+    <%= link_to '削除する', schedule_path(@schedule), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+    <% end %>
+  </div>
+  <!--% end %>-->
+  </div>
+</div>

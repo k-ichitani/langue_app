@@ -1,0 +1,18 @@
+<div class="row-md-8 offset-2 mt-5 h2">
+  予約確認
+</div>
+  <div class="row-md-8 offset-2 mt-5">
+    <%= @student.last_name + @student.first_name %>
+    <%= @reservation.schedule.start_time.strftime("%Y-%m-%d %H:%M") %>〜<%= @reservation.schedule.finish_time.strftime("%Y-%m-%d %H:%M") %>
+    <p>こちらの内容で予約を確定します。<br>
+    よろしいですか？</p>
+  <div>
+    <%= form_with model: @reservation, url:  complete_schedule_reservation_path do |f| %>
+      <%= f.hidden_field :student_id, value: current_student.id %>
+      <%= f.hidden_field :schedule_id, value: @schedule.id %>
+      <%= f.submit '確定する', class: "btn btn-success" %>
+    <% end %>
+    <%= link_to '予約をやめる', schedules_path, class: "btn btn-secondary" %>
+
+  </div>
+</div>

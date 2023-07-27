@@ -1,0 +1,88 @@
+@import '~bootstrap/scss/bootstrap';
+
+main {
+  color: #65514F;
+}
+
+.background {
+  background-image: url('../images/paris.jpg');
+  // background-size: contain;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: right;
+  background-color:rgba(255,255,255,0.7);
+  background-blend-mode:lighten;
+}
+
+header {
+  background-color: #EDDACB;
+}
+
+.nav-item {
+  width: 150px;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+footer {
+  background-color: #EDDACB;
+  color: #65514F;
+}
+
+body {
+  background-color: #fffff9;
+  margin: 0;
+}
+
+/*body {*/
+/*  background-image: image-url("paris.jpg");}*/
+
+.simple-calendar {
+  width: 100%;
+
+  .hour {
+    padding: 0px;
+    text-align: center;
+    color: #65514F;
+    background-color: #C8B6A6;
+  }
+  .circle {
+    background-color: #fffff9;
+    color: #65514F;
+  }
+
+  .cross {
+    background-color: #e6e6e6;
+    color: #65514F;
+  }
+
+  .day {
+    color: #65514F;
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+
+  .table {
+    color: #65514F;
+  }
+}

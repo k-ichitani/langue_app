@@ -1,0 +1,26 @@
+<div class="container mb-5">
+  <%= render "layouts/errors", obj: @schedule %>
+  <div class="row-md-9 offset-1 mt-5 h2">スケジュール変更</div>
+  <div class="row-md-8 offset-2 mt-4">
+    <%= form_with model: @schedule, url: schedule_path(@schedule), method: :patch do |f| %>
+      <!--f.hidden_fieldで講師idを送信-->
+      <%= f.hidden_field :teacher_id, value: @schedule.teacher.id %>
+      <table>
+          <tr>
+            <th>講師名</th>
+            <td><%= @schedule.teacher.first_name + @schedule.teacher.last_name %></td>
+          </tr>
+          <tr>
+            <th>勤務日時</th>
+          </tr>
+          <tr>
+          <td>
+            <%= f.datetime_select :start_time, :minute_step => 30 %>～
+            <%= f.datetime_select :finish_time, :minute_step => 30 %></td>
+          </tr>
+      </table>
+      <%= f.submit '変更', class: "btn btn-success" %>
+      <div><%= link_to '戻る', :back %></div>
+    <% end %>
+  </div>
+</div>
