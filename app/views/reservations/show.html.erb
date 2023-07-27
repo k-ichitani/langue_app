@@ -3,7 +3,11 @@
   <div class="row-md-8 offset-2 mt-4">
     <table>
       <tr>
-        <td>受講者氏名：<%= @reservation.student.last_name %>&nbsp;<%= @reservation.student.first_name %></td>
+        <td>受講者氏名：
+          <%= link_to students_information_path(@student) do %>
+            <%= @reservation.student.last_name %>&nbsp;<%= @reservation.student.first_name %>
+          <% end %>
+        </td>
       </tr>
       <tr>
         <td>レッスン担当：<%= @reservation.schedule.teacher.first_name %>&nbsp;<%= @reservation.schedule.teacher.last_name%></td>

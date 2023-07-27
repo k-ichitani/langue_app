@@ -1,4 +1,6 @@
 class SchedulesController < ApplicationController
+  before_action :authenticate_login_user
+
   def new
     @schedule = Schedule.new
   end
@@ -45,9 +47,7 @@ class SchedulesController < ApplicationController
       @teacher = current_teacher
       @schedules = @teacher.schedules.where("start_time >= ?", Date.current).order(start_time: :asc)
     else
-      #whereで一週間分の予定を取ってくるようにする 未！
       @schedules = Schedule.where("start_time >= ?", Date.current).order(start_time: :asc)
-      # binding.pry
     end
   end
 
@@ -82,6 +82,25 @@ class SchedulesController < ApplicationController
 
   def schedule_params
     params.require(:schedule).permit(:start_time, :finish_time, :teacher_id)
+  end
+
+  def authenticate_login_user
+    case action_name
+    when "new"
+      redirect_to new_teacher_session_path unless teacher_signed_in? || admin_signed_in?
+    when "create"
+      redirect_to new_teacher_session_path unless teacher_signed_in? || admin_signed_in?
+    when "index"
+      redirect_to new_student_session_path unless student_signed_in? || teacher_signed_in? || admin_signed_in?
+    when "show"
+      redirect_to new_student_session_path unless student_signed_in? || teacher_signed_in? || admin_signed_in?
+    when "edit"
+      redirect_to new_teacher_session_path unless teacher_signed_in? || admin_signed_in?
+    when "update"
+      redirect_to new_teacher_session_path unless teacher_signed_in? || admin_signed_in?
+    when "destroy"
+      redirect_to new_teacher_session_path unless teacher_signed_in? || admin_signed_in?
+    end
   end
 
 end

@@ -1,8 +1,10 @@
 class ReservationsController < ApplicationController
+  before_action :authenticate_login_user
+
   def new
     @schedule = Schedule.find(params[:schedule_id])
     @reservation = Reservation.new
-    @day = params[:day]
+    # @day = params[:day]
   end
 
   def confirm
@@ -48,6 +50,7 @@ class ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
+    @student = @reservation.student
 
   end
 
@@ -71,4 +74,26 @@ class ReservationsController < ApplicationController
     # byebug
     params.require(:reservation).permit(:student_id, :schedule_id, :status)
   end
+
+  def authenticate_login_user
+    case action_name
+    when "new"
+      redirect_to new_student_session_path unless student_signed_in?
+    when "confirm"
+      redirect_to new_student_session_path unless student_signed_in?
+    when "create"
+      redirect_to new_student_session_path unless student_signed_in?
+    when "complete"
+      redirect_to new_student_session_path unless student_signed_in?
+    when "index"
+      redirect_to new_student_session_path unless student_signed_in? || teacher_signed_in? || admin_signed_in?
+    when "show"
+      redirect_to new_student_session_path unless student_signed_in? || teacher_signed_in? || admin_signed_in?
+    when "edit"
+      redirect_to new_teacher_session_path unless teacher_signed_in? || admin_signed_in?
+    when "update"
+      redirect_to new_teacher_session_path unless teacher_signed_in? || admin_signed_in?
+    end
+  end
+
 end
