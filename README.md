@@ -24,7 +24,8 @@
 ​
 
 ## 設計書
-<!--テーマを設定・提出する時点では不要です-->
+- テーブル定義書(https://docs.google.com/spreadsheets/d/1q2-2f8hqHTkrE58TWjQZeKBgR0Tfb5iwTPUUtFgKHbU/edit?usp=sharing)
+- アプリケーション詳細設計書(https://docs.google.com/spreadsheets/d/1NoXgpqwN0ma6oPC4N92hhMexb4JLN64BazGX-rJgnmo/edit?usp=sharing)
 ​
 
 ## 開発環境
