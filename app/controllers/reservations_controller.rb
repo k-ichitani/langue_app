@@ -31,7 +31,6 @@ class ReservationsController < ApplicationController
   end
 
   def index
-    # @schedules = Schedule.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 2).order(day: :desc)
     @schedules = Schedule.all
     if @schedules.present? && student_signed_in?
       @student = current_student
