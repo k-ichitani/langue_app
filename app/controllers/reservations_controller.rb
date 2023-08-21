@@ -40,7 +40,7 @@ class ReservationsController < ApplicationController
     elsif @schedules.present? && teacher_signed_in?
       @teacher = current_teacher
       # @reservations = @teacher.schedules.map { |schedule| schedule.reservation }.compact
-      @reservations = Reservation.where(schedule_id: @teacher.schedules.pluck(:id)).order(:start_time)
+      @reservations = Reservation.where(schedule_id: @teacher.schedules.pluck(:id))
     else
       flash[:alert] = '予約はありません'
       redirect_to schedules_path
