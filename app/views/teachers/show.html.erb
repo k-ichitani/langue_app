@@ -49,17 +49,17 @@
         <td><%= image_tag @teacher.get_image(100, 100) %></td>
       </tr>
       <tr>
-        <th>氏名</th>
+        <th class="text-nowrap">氏名</th>
         <td>
           <%= @teacher.first_name %>&nbsp;<%= @teacher.last_name %>
         </td>
       </tr>
       <tr>
-        <th>得意分野</th>
+        <th class="text-nowrap">得意分野</th>
         <td><%= @teacher.specialty_i18n %></td>
       </tr>
       <tr>
-        <th>メッセージ</th>
+        <th class="text-nowrap">メッセージ</th>
         <td><%= @teacher.introduction %></td>
     </table>
   <% end %>
