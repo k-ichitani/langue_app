@@ -50,7 +50,6 @@
                     <% if schedule.nil? %>
                       ○
                     <% else %>
-                    <%# byebug %>
                     <%= link_to new_schedule_reservation_path(schedule.id) do %>
                       ○
                     <% end %>
@@ -59,9 +58,6 @@
                     ○
                   <% end %>
                 </td>
-                <%#= link_to schedule_path(@schedule) do %>
-                <%#= teacher_name(day, time) %>
-                <%# end %>
               <% else %>
                 <td class="cross text-center">
                   ×
