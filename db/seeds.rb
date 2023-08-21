@@ -62,10 +62,19 @@ Teacher.create!(
 )
 
 Student.create!(
-  last_name: 'Yamda',
+  last_name: 'Yamada',
   first_name: 'Tarou',
   email: 'yamada@example.com',
   telephone_number: '00000000000',
   password: '123456',
   is_deleted: false
 )
+
+Schedule.create!(
+  teacher_id: 1,
+  start_time: DateTime.new(2023, 9, 1, 9, 0, 0),
+  finish_time: DateTime.new(2023, 9, 1, 10, 0, 0)
+)
+
+# 30 times do
+#   lesson_start_time = Faker::Time.between(from: DateTime)
