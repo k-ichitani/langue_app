@@ -76,5 +76,27 @@ Schedule.create!(
   finish_time: DateTime.new(2023, 9, 1, 10, 0, 0)
 )
 
-# 30 times do
-#   lesson_start_time = Faker::Time.between(from: DateTime)
+5.times do |n|
+  Schedule.create!(
+    teacher_id: 1,
+    start_time: DateTime.new(2023, 9, 4, 9, 0, 0) + n.days,
+    finish_time: DateTime.new(2023, 9, 4, 10, 0, 0) + n.days
+  )
+end
+
+5.times do |n|
+  Schedule.create!(
+    teacher_id: 2,
+    start_time: DateTime.new(2023, 9, 10, 22, 0, 0) + n.days,
+    finish_time: DateTime.new(2023, 9, 10, 23, 0, 0) + n.days
+  )
+end
+
+# 30.times do
+#   lesson_start_time = Faker::Time.between(from: DateTime.now + 10.days, to: DateTime.now + 60.days)
+#   Schedule.create!(
+#     teacher_id: Faker::Number.between(from: 1, to: 5),
+#     start_time: lesson_start_time,
+#     finish_time: lesson_start_time + 1.hours
+#   )
+# end
