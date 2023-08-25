@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       post 'complete', to: 'reservations#create'
     end
   end
-  # resources :reservations, only: [:show, :edit, :update, :destroy] # 問題が発生したらこのへん見直して！
+
   resources :reservations, only: [:index]
   resources :teachers, only: [:index]
     get 'teachers/information/:id', to: 'teachers#show', as: 'teachers_information'

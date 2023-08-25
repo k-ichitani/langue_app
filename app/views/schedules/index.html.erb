@@ -11,11 +11,11 @@
     <% end %>
   </div>
   <div class="row">
-  <div class="col-md-9 offset-1">
-  <%= week_calendar events: @schedules do |date, schedules| %>
-    <%= date.day %>
-  <% end %>
-  </div>
+    <div class="col-md-9 offset-1">
+    <%= week_calendar events: @schedules do |date, schedules| %>
+      <%= date.day %>
+    <% end %>
+    </div>
   </div>
 
 <% if admin_signed_in? || teacher_signed_in? %>
