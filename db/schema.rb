@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_20_112543) do
+ActiveRecord::Schema.define(version: 2023_08_28_084326) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 2023_07_20_112543) do
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.integer "teacher_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_favorites_on_student_id"
+    t.index ["teacher_id"], name: "index_favorites_on_teacher_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -111,4 +120,6 @@ ActiveRecord::Schema.define(version: 2023_07_20_112543) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "favorites", "students"
+  add_foreign_key "favorites", "teachers"
 end

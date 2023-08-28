@@ -49,16 +49,26 @@
           <tr>
             <th class="text-nowrap">氏名</th>
             <th class="text-nowrap">メッセージ</th>
+            <th class="text-nowrap">お気に入り</th>
           </tr>
         </thead>
         <% @teachers.each do |teacher| %>
         <tbody>
           <tr>
-            <td><%= link_to teachers_information_path(teacher) do %>
-            <%= image_tag teacher.get_image(50, 50) %>
-            <%= teacher.last_name %>&nbsp;<%= teacher.first_name %>
-            <% end %></td>
-            <td><div class="text-wrap text-truncate w-50 m-0"><%= teacher.introduction %></div></td>
+            <td>
+              <%= link_to teachers_information_path(teacher) do %>
+                <%= image_tag teacher.get_image(50, 50) %>
+                <%= teacher.last_name %>&nbsp;<%= teacher.first_name %>
+              <% end %>
+            </td>
+            <td>
+              <div class="text-wrap text-truncate w-50 m-0">
+                <%= teacher.introduction %>
+              </div>
+            </td>
+            <td>
+              ♡
+            </td>
           </tr>
         </tbody>
         <% end %>

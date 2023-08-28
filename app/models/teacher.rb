@@ -7,6 +7,7 @@ class Teacher < ApplicationRecord
   has_one_attached :image
   has_many :schedules, dependent: :destroy
   has_many :reservations, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :last_name, presence: true
   validates :first_name, presence: true

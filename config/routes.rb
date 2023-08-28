@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :reservations, only: [:index]
   resources :teachers, only: [:index]
     get 'teachers/information/:id', to: 'teachers#show', as: 'teachers_information'
+    post 'teachers/information/:id/favorites', to: 'favorites#create', as: 'create_favorites'
+    delete 'teachers/information/:id/favorites', to: 'favorites#destroy', as: 'destroy_favorites'
     get 'teachers/information/:id/edit', to: 'teachers#edit', as: 'edit_teachers_information'
     patch 'teachers/information/:id', to: 'teachers#update'
     get 'teachers/confirm'
@@ -25,6 +27,7 @@ Rails.application.routes.draw do
     get 'students/confirm', to: 'students#confirm', as: 'confirm_students_information'
     patch 'students/withdraw', to: 'students#withdraw'
   resources :contacts, only: [:new, :create]
+  # post 'favorite/:id', to: 'favorite#create', as: 'create_favorite'
 
   # 管理者用
   # URL /admin/sign_in ...

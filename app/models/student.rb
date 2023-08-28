@@ -5,6 +5,7 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reservations
+  has_many :favorites, dependent: :destroy
 
   validates :last_name, presence: true, format: { with: /\A[a-zA-Z]+\z/, message: "は半角英字で入力してください" }
   validates :first_name, presence: true, format: { with: /^[a-zA-Z]+$/, message: "は半角英字で入力してください" ,:multiline => true }
