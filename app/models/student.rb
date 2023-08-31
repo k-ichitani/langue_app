@@ -18,6 +18,7 @@ class Student < ApplicationRecord
     # is_deletedがfalseならtrueを返すようにしている
     super && (is_deleted == false)
   end
+  
 
   GUEST_USER_EMAIL = "guest@example.com"
 

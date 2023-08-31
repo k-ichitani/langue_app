@@ -26,4 +26,8 @@ class Teacher < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def favorited_by?(student)
+    favorites.where(student_id: student.id).exists?
+  end
 end
