@@ -67,9 +67,9 @@
               </div>
             </td>
             <% if teacher.favorited_by?(current_student) %>
-              <td><%= link_to "♥︎", destroy_favorites_path(teacher), method: :DELETE %></td>
+              <td class="text-center"><%= link_to "♥︎", destroy_favorites_path(teacher), method: :DELETE %></td>
             <% else %>
-              <td><%= link_to "♡", create_favorites_path(teacher), method: :POST %></td>
+              <td class="text-center"><%= link_to "♡", create_favorites_path(teacher), method: :POST %></td>
             <% end %>
           </tr>
         </tbody>
