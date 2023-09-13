@@ -1,0 +1,5 @@
+<% if teacher.favorited_by?(current_student) %>
+  <td><%= link_to "", destroy_favorites_path(teacher), method: :DELETE, remote: true, class: "fas fa-heart" %></td>
+<% else %>
+  <td><%= link_to "", create_favorites_path(teacher), method: :POST, remote: true, class: "far fa-heart" %></td>
+<% end %>

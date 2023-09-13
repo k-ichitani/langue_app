@@ -8,6 +8,8 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
+    favorites = Favorite.where(student_id: current_student.id).pluck(:teacher_id)
+    @favorite_list = Teacher.find(favorites)
   end
 
   def edit
@@ -57,7 +59,7 @@ class StudentsController < ApplicationController
       redirect_to students_information_path(current_student), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
-  
+
   def authenticate_login_user
     case action_name
     when "index"

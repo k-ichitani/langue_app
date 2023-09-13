@@ -66,11 +66,9 @@
                 <%= teacher.introduction %>
               </div>
             </td>
-            <% if teacher.favorited_by?(current_student) %>
-              <td class="text-center"><%= link_to "♥︎", destroy_favorites_path(teacher), method: :DELETE %></td>
-            <% else %>
-              <td class="text-center"><%= link_to "♡", create_favorites_path(teacher), method: :POST %></td>
-            <% end %>
+            <div id ="favorite_<%= teacher.id %>">
+              <%= render 'teachers/shared/favorite', teacher: teacher %>
+            </div>
           </tr>
         </tbody>
         <% end %>
