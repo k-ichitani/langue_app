@@ -49,11 +49,12 @@
     <% else %>
     <% end %>
   </div>
-  <div class="row-md-8 offset-2 mt-3">
+  <div class="row-md-8 offset-2 mt-5">
     <div>
       <% if @favorite_list.present? %>
         <h5>お気に入りに登録した講師</h5>
         <% @favorite_list.each do |teacher| %>
+        <table>
           <tbody>
             <tr>
               <td>
@@ -64,6 +65,7 @@
               </td>
             </tr>
           </tbody>
+        </table>
         <% end %>
       <% end %>
     </div>
