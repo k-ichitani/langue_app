@@ -47,9 +47,9 @@
       <table>
         <thead>
           <tr>
-            <th class="text-nowrap">氏名</th>
-            <th class="text-nowrap">メッセージ</th>
-            <th class="text-nowrap">お気に入り</th>
+            <th class="text-nowrap text-center", style="width: 20%">氏名</th>
+            <th class="text-nowrap text-center", style="width: 30%">メッセージ</th>
+            <th class="text-nowrap text-center", style="width: 10%">お気に入り</th>
           </tr>
         </thead>
         <% @teachers.each do |teacher| %>
@@ -66,9 +66,11 @@
                 <%= teacher.introduction %>
               </div>
             </td>
-            <div id ="favorite_<%= teacher.id %>">
-              <%= render 'teachers/shared/favorite', teacher: teacher %>
-            </div>
+            <td>
+              <div id ="favorite_<%= teacher.id %>">
+                <%= render 'teachers/shared/favorite', teacher: teacher %>
+              </div>
+            </td>
           </tr>
         </tbody>
         <% end %>

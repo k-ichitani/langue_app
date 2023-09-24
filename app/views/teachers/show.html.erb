@@ -47,8 +47,9 @@
     <table>
       <tr>
         <td><%= image_tag @teacher.get_image(100, 100) %></td>
-        <div id ="favorite_<%= @teacher.id %>">
+        <td><div id ="favorite_<%= @teacher.id %>">
           <%= render 'teachers/shared/favorite', teacher: @teacher %>
+          </td>
         </div>
       </tr>
       <tr>
